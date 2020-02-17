@@ -1,0 +1,82 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+<script src="../script/framework/jquery/jquery.easing.js"></script>
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<div style="text-align: center;">
+    <p>
+        <button id="origin1" class="MikumarkButton">原图1</button>
+        <button id="origin2" class="MikumarkButton">原图2</button>
+        <button id="origin3" class="MikumarkButton">原图3</button>
+    </p>
+    <button id="otsu" class="MikumarkButton" style="width: 100%;">二值化</button>
+</div>
+
+<canvas id="cv" style="width:640px;height:360px;" width="640" height="360"></canvas>
+
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/signal.js"></script>
+<script src="../script/image.js"></script>
+<script src="../script/canvas.js"></script>
+<script>
+
+
+let cv = new Canvas('cv', [0,360], [640,0]);
+
+function loadImage(src, callback) {
+    let image = document.createElement('img');
+    image.src = src;
+    image.addEventListener("load", function() {
+        cv.context.drawImage(image, 0, 0);
+        callback();
+    });
+}
+
+setTimeout(()=>{loadImage("../image/resource/GEB-3.jpg", ()=>{});}, 0);
+
+$("#origin1").click(()=> { loadImage(`../image/resource/GEB-1.jpg`, ()=> {}); });
+$("#origin2").click(()=> { loadImage(`../image/resource/GEB-2.jpg`, ()=> {}); });
+$("#origin3").click(()=> { loadImage(`../image/resource/GEB-3.jpg`, ()=> {}); });
+
+$("#otsu").click(()=> {
+    //loadImage(`./image/resource/GEB-3.jpg`, ()=> {
+        let input = cv.ReadYUV420().Y;
+        let newframe = Otsu(input);
+        cv.DrawRGB({
+            R: newframe, G: newframe, B: newframe
+        });
+    //});
+});
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

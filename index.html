@@ -1,0 +1,387 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./style/framework.css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="./style/markdown.css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="./style/highlight/vs.css" charset="utf-8"/>
+    <title>Project Aurora</title>
+</head>
+<body>
+
+<!--进度条-->
+<div class="Progressbar" id="Progressbar"></div>
+
+<!--首屏加载遮罩-->
+<div class="FirstLoadingMask">
+    <svg version="1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="transform: scale(1.4);"><style>@keyframes rotate{0%{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes fillunfill{0%{stroke-dashoffset:32.3}50%{stroke-dashoffset:0}to{stroke-dashoffset:-31.9}}@keyframes rot{0%{transform:rotate(0deg)}to{transform:rotate(-360deg)}}@keyframes colors{0%,to{stroke:#00aaff}}</style><g style="animation-duration:1568.63ms;animation-iteration-count:infinite;animation-name:rotate;animation-timing-function:linear;transform-origin:50% 50%;width:16px;height:16px"><path fill="none" d="M8 1.125A6.875 6.875 0 1 1 1.125 8" stroke-width="2.25" stroke-linecap="round" style="animation-duration:1333ms,5332ms,5332ms;animation-fill-mode:forwards;animation-iteration-count:infinite,infinite,infinite;animation-name:fillunfill,rot,colors;animation-play-state:running,running,running;animation-timing-function:cubic-bezier(.4,0,.2,1),steps(4),linear;transform-origin:50% 50%" stroke-dasharray="32.4" stroke-dashoffset="32.4"/></g></svg>&nbsp;&nbsp;请稍等
+</div>
+
+<!--顶部标题（仅移动端显示）-->
+<div class="StickyTitleContainer" style="display: none;">
+    <div id="StickyTitle" class="StickyTitle" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"></div>
+    <div class="StickyTitleBackground"></div>
+</div>
+
+<!--左边栏-->
+<aside class="LeftAside">
+    <!--左上：后退按钮-->
+    <button id="BackButton" class="Button Raised Round" onclick="history.go(-1);" style="display: none;">
+        <img src="./image/icons/back-gray.png" style="height:16px;width:16px;margin-bottom: 2px; vertical-align: middle;">
+    </button>
+</aside>
+
+<!--右边栏-->
+<aside class="RightAside">
+    <!--右侧：菜单（目录）-->
+    <div id="MenuContainer" class="MenuContainer" style="display: none;">
+        <!--菜单顶部的导航栏，包括Toggle按钮-->
+        <div class="StickyNavbar">
+            <button id="MenuButton" class="MenuButton" data-state="off">menu</button>
+            <nav class="Navbar" id="MenuNavbar" style="top: 40px; z-index: 100000; border: none;">
+                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+            </nav>
+        </div>
+        <!--菜单主题内容，一般是目录。由SPA_Render插入相应的锚点。-->
+        <div id="MenuContentContainer" class="MenuContentContainer"></div>
+    </div>
+    <!--右下：回到顶部按钮-->
+    <button id="GoTopButton" class="Button Raised Round" style="position: absolute; bottom: 80px; right: 0;" onclick="$('html, body').animate({scrollTop:0},'fast');">
+        <img src="./image/icons/gotop.png"  style="height:19px;width:17px; vertical-align: middle;">
+    </button>
+</aside>
+
+<!--页面框架-->
+<div class="Main">
+    <!--标题和封面-->
+    <header class="Header SPA_TITLE_CONTAINER"></header>
+    <!--导航栏-->
+    <nav class="Navbar" id="MainNavbar">
+        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+    </nav>
+    <!--正文内容-->
+    <article class="Article SPA_MAIN_CONTAINER"></article>
+    <!--底部-->
+    <footer class="Footer">
+        <div style="font-size: 13px; text-align: center; line-height: 25px; color: #ccc;" class="RBGradient">★ Project Aurora ★</div>
+        <div style="font-size: 13px; text-align: center; line-height: 25px; color: #ccc;">© 2016-<span class="CopyrightYear"></span> Mikukonai</div>
+    </footer>
+</div>
+
+
+
+<!--首页模板-->
+
+<template class="index" id="index">
+
+    <div class="IndexItemContainer"><div class="IndexItemPaddingBox">
+        <table class="IndexItemTable"><tr>
+            <td class="IndexItemTableLeft">
+                <div class="IndexItemTitle" data-prefix="★"><a class="IndexItemTitleLink SPA_TRIGGER" data-target="blog/小米-CC9-Pro-印象">小米 CC9 Pro 印象</a></div>
+                <div class="IndexItemSummary">
+                    <a style="color: inherit;" href="https://www.bilibili.com/video/av66512542" target="_blank">谁TM买小米儿啊？</a>我TM买小米儿！
+                </div>
+            </td>
+            <td class="IndexItemTableRight">
+                <div style="float:right;margin: auto 6px auto auto;width:45px; height:45px;">
+                    <img style="width:100%; height:100%" src="./image/wiki/Q/RUOK.png"/>
+                </div>
+            </td>
+        </tr></table>
+    </div></div>
+
+    <div class="IndexItemContainer"><div class="IndexItemPaddingBox">
+        <table class="IndexItemTable"><tr>
+            <td class="IndexItemTableLeft">
+                <div class="IndexItemTitle" data-prefix="★"><a class="IndexItemTitleLink SPA_TRIGGER" data-target="blog/傅里叶变换">傅里叶变换复习提纲</a></div>
+                <div class="IndexItemSummary">
+                    躲进小楼学信号，管他新冠与肺炎
+                </div>
+            </td>
+            <td class="IndexItemTableRight">
+                <span style="font-size: 30px;">🌊</span>
+            </td>
+        </tr></table>
+    </div></div>
+
+    <div class="IndexItemContainer"><div class="IndexItemPaddingBox">
+        <table class="IndexItemTable"><tr>
+            <td class="IndexItemTableLeft">
+                <div class="IndexItemTitle" data-prefix="★"><a class="IndexItemTitleLink" target="_blank" href="https://github.com/mikukonai/MP3-Study">MP3编解码算法研究</a></div>
+                <div class="IndexItemSummary">
+                    2019年11月上旬开始至今
+                </div>
+            </td>
+            <td class="IndexItemTableRight">
+                <span style="font-size: 30px;">🎵</span>
+            </td>
+        </tr></table>
+    </div></div>
+
+    <div class="IndexBottomLink SPA_TRIGGER" data-target="blog">全部文章 »</div>
+
+    <script> SlideInOneByOne("IndexItemContainer", 5, 800, 300); // 进场动画 </script>
+</template>
+
+
+
+
+<!--灵感页模板-->
+<template id="inspirations">
+    <!--正文容器-->
+    <div class="InspirationContainer" id="InspirationContainer"></div>
+    <!--底部内容-->
+    <div class="InspirationEnding" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"></div>
+</template>
+
+
+
+<!--文章列表模板-->
+<template id="blog">
+    <div class="ListSortingOptionContainer">
+        <span class="ListSortingOption ListSortingOptionLeft" data-sorting-option="date-dec">日期降序</span><span class="ListSortingOption ListSortingOptionRight" data-sorting-option="category">分类归类</span>
+    </div>
+    <div id="ListContainer"></div>
+    <div class="ListEnding">封面出处：《凉宫春日的忧郁》</div>
+</template>
+
+
+
+
+<!--"关于"模板-->
+<template id="about">
+
+    <table style="width:100%; font-size:14px; text-align: left; margin: 30px auto 30px auto; color: #233333;" align="center">
+        <tr>
+            <td class="AboutTdLeft">性别</td><td class="AboutTdRight">男♂</td>
+        </tr>
+        <tr>
+            <td class="AboutTdLeft">现居</td><td class="AboutTdRight">南京</td>
+        </tr>
+    </table>
+
+    <div class="AboutTitle" id="motto">格 言</div>
+    <div class="AboutContent">怕什么真理无穷，进一步有进一步的欢喜</div>
+
+    <div class="AboutTitle" id="blogroll" style="color:#ff6893; background: linear-gradient(90deg, #ffffff, #fff3f3, #ffffff);">友 情 链 接<div class="AboutSubtitle">以添加时间为序 / 欢迎交换友情链接</div></div>
+    <table class="AboutBlogrollTable">
+        <tr>
+            <td><a target="_blank" href="http://zephray.cnvintage.org/">ZephRay</a></td>
+            <td><a target="_blank" href="https://mp.weixin.qq.com/s/QOw9mRvGVtocy3Nb315fYA">白痴一只喵</a></td>
+            <td><a target="_blank" href="https://imjad.cn/">猫与向日葵</a></td>
+            <!-- <td><a target="_blank" href="https://aoaoao.me/">Aaron</a></td> -->
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://256kb.cn/">野生喵喵</a></td>
+            <td><a target="_blank" href="https://blog.ddlee.cn/">萧爽楼</a></td>
+            <td><a target="_blank" href="https://ice1000.org/">中间表示(IR)</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://tcxx.info/">甜欣屋</a></td>
+            <td><a target="_blank" href="https://meow3.family.blog/">惡魔菌</a></td>
+            <td><a target="_blank" href="https://tql.ink/">Akkariin</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.qiutianaimeili.com/">秋天爱美丽</a></td>
+            <td><a target="_blank" href="https://chanshiyu.com/">蝉時雨</a></td>
+            <td><a target="_blank" href="https://razertory.me/">Razertory</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://ssshooter.com/">UsubeniFantasy</a></td>
+            <td><a target="_blank" href="http://yuki.systems/">Brethland</a></td>
+            <td><a target="_blank" href="http://pixelart.cn/">像素艺术</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.imalan.cn/">三无计划</a></td>
+            <td><a target="_blank" href="https://ntzyz.io">ntzyz</a></td>
+            <td><a target="_blank" href="https://wenzhao-xiang.github.io/Blog/">Winzzzzard</a></td>
+        </tr>
+    </table>
+
+    <div class="AboutTitle" id="contacts">联 系 方 式</div>
+    <div class="AboutContent">
+        <a class="AboutLink" target="_blank" href="https://github.com/mikukonai/">GitHub</a><span class="AboutSeparator">/</span><a class="AboutLink" target="_blank" href="https://www.zhihu.com/people/mikukonai/">知乎</a>
+    </div>
+    <div class="AboutContent">
+        <div style="margin:0 auto 0px auto">
+            <div style="font-size: 13px;color:#888888;line-height: 25px;">- 个人微信 -</div>
+            <img src="./image/qrcode.png" style="display:block;margin:0px auto 0 auto;width:35%;">
+        </div>
+    </div>
+
+    <div class="AboutTitle" id="copyright">权 利 声 明</div>
+    <div class="AboutContent">版权所有 &copy; 2016-<span class="CopyrightYear"></span> Mikukonai<br>保留所有权利</div>
+    <div class="AboutContent">除另有声明外，所有原创内容均可在①署原作者名和②非盈利用途的前提下使用和传播。</div>
+
+    <div class="AboutTitle" id="changelog">版 本 记 录</div>
+
+    <div class="AboutContent"><img src="./image/pa-icon.jpg" style="width:45px; height: 45px;"><br><span style="color:#888888">Project Aurora V4.0</span></div>
+
+    <div class="AboutContent">
+        【<a class="AboutLink" href="https://github.com/mikukonai/mikukonai.github.io" target="_blank">Git仓库</a>】
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V0.1<span style="color:#888888;padding-left: 15px;">2016.11.24</span></p>
+        <p class="AboutChangelog">试验性的简单个人主页</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V1.0<span style="color:#888888;padding-left: 15px;">2017.09.19</span></p>
+        <p class="AboutChangelog">两栏式布局，较完善的样式<br>使用第三方Markdown解析器</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V2.0<span style="color:#888888;padding-left: 15px;">2018.02.04</span></p>
+        <p class="AboutChangelog">响应式布局<br>使用自主实现的MD解析器</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V3.0<span style="color:#888888;padding-left: 15px;">2018.07.26</span></p>
+        <p class="AboutChangelog">博客更名“Project Aurora”<br>精简内容和结构，重新设计样式</p>
+    </div>
+    <!--
+    <div class="AboutEdition">
+        <p class="AboutVernum">V3.1<span style="color:#888888;padding-left: 15px;">2019.01.11</span></p>
+        <p class="AboutChangelog">MD解析器与文章模板重构<br>Markdown与模板分离</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V3.2<span style="color:#888888;padding-left: 15px;">2019.02.20</span></p>
+        <p class="AboutChangelog">目录和灵感页重构<br>使用TravisCI自动生成RSS</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V3.3<span style="color:#888888;padding-left: 15px;">2019.03.15</span></p>
+        <p class="AboutChangelog">重构为SPA单页应用<br>样式设计参考 Material Design</p>
+    </div>
+    -->
+    <div class="AboutEdition">
+        <p class="AboutVernum">V4.0<span style="color:#888888;padding-left: 15px;">2019.10.23</span></p>
+        <p class="AboutChangelog">彻底重构博客框架<br>增加灵感目录和标签索引功能<br>增加个人Wiki功能</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">V4.1<span style="color:#888888;padding-left: 15px;">2020.02.14</span></p>
+        <p class="AboutChangelog">【当前版本】<br>剥离博客框架Iroha<br>优化灵感目录的布局</p>
+    </div>
+
+    <div class="AboutTitle" id="hoshinoarika">星 之 所 在<div class="AboutSubtitle">星の在り処 ❤ RPG《英雄传说VI·空之轨迹》主题歌</div></div>
+    <div class="AboutContent">
+        <a class="AboutLink" id="ShowHoshinoarikaPlayer" onclick="$('#HoshinoarikaPlayer').attr('src', 'https://music.163.com/outchain/player?type=2&id=559262&auto=0&height=66'); $('#HoshinoarikaPlayer').show(); $('#ShowHoshinoarikaPlayer').hide();">听一听</a>
+        <iframe id="HoshinoarikaPlayer" style="display:none;" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86></iframe>
+    </div>
+
+    <div class="AboutContent" style="color:#ff88aa; font-size: 18px; letter-spacing: 2px; margin-bottom:20px; margin-top: 20px;">感谢来访</div>
+
+</template>
+
+
+
+<!--文章正文框架模板-->
+<template id="blog-article">
+    <div class="MikumarkMetadata">
+        <span id="MikumarkMetadataDate" style="padding-right:8px;"><span class="SkeletonPlaceholder" style="width:70px;">0</span></span>·<span id="MikumarkMetadataAuthors" style="padding-left:8px;"><span class="SkeletonPlaceholder" style="width:70px;">0</span></span>
+    </div>
+    <div class="MikumarkContainer" id="MikumarkContainer">
+        <span class="SkeletonPlaceholder" style="width:100%;">占位骨架</span><br>
+        <span class="SkeletonPlaceholder" style="width:100%;">占位骨架</span><br>
+        <span class="SkeletonPlaceholder" style="width:70%;">占位骨架</span><br>
+    </div>
+</template>
+
+
+
+<!--封面参数-->
+
+<template id="index-titlebg">        url(./image/cover/titlebg-index.jpg) </template>
+<template id="inspirations-titlebg"> url(./image/cover/titlebg-inspiration.jpg) </template>
+<template id="blog-titlebg">         url(./image/cover/titlebg-blog.jpg) </template>
+<template id="about-titlebg">        url(./image/cover/titlebg-about.jpg) </template>
+
+<!--Header模板-->
+
+<template id="index-title">        <div class="HeaderTitleCenter"><b>Project Aurora</b><div class="HeaderSubtitleCenter">- 仁者心动 -</div></div> </template>
+<template id="inspirations-title"> <div class="HeaderTitleLeft">灵感</div> </template>
+<template id="blog-title">         <div class="HeaderTitleLeft">博客</div> </template>
+<template id="about-title">        <div class="HeaderTitleLeft">关于</div> </template>
+
+
+<!--文章正文Header-->
+<template id="blog-article-title"><div class="TitleContainer"><div class="Title" id="Title" style="opacity: 1;">请稍等...</div></div></template>
+
+<!--SPA交互和渲染控制-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$']]},
+    delayStartupUntil: "configured"
+});
+</script>
+<script async src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML&delayStartupUntil=configured"></script>
+
+<script src="./script/framework/jquery/jquery.min.js"></script>
+<script src="./script/framework/jquery/jquery.easing.js"></script>
+
+<script src="./script/framework/framework.js"></script>
+
+<script src="./script/framework/list.js"></script>
+
+<script src="./script/framework/inspiration.js"></script>
+
+<script src="./script/framework/highlight/highlight.js"></script>
+<script src="./script/framework/mikumark.js"></script>
+<script src="./script/framework/article.js"></script>
+
+<script>
+
+////////////////////////////////////////////////////////
+//
+//  页 面 冷 启 动 流 程
+//
+////////////////////////////////////////////////////////
+
+(() => {
+    SPA_RegisterTriggers();
+    ActionsOnReady();
+
+    window.onload = () => {
+        console.log("%c ★ Framework Iroha ★ ", "font-size: 16px; height: 26px; line-height: 26px; border-radius: 5px; text-align: center; color:#fff; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));");
+        console.log(`版本 4.0 (2019.10.23)`);
+        console.log(`版权所有 © 2016-2019 Mikukonai (https://github.com/mikukonai)`);
+        console.log(`Git仓库：https://github.com/mikukonai/Iroha`);
+        console.log(``);
+        let HashString = (window.location.hash === "") ? "#/index" : window.location.hash;
+        SPA_Render(HashString);
+        if(!history.state) {
+            history.pushState({PageID: HashString}, '', window.location.href);
+            SCROLL_POSITION_STACK.push(window.pageYOffset);
+        }
+    };
+
+    window.onresize = () => {
+        ArrangeSideButtonLayout();
+    };
+
+    // 返回按钮动作
+    window.onpopstate = (e) => {
+        let prevScrollY = SCROLL_POSITION_STACK.pop() || 0;
+        let currentPath = e.state.PageID;
+        let pageId = currentPath.split("/")[0];
+        if(!e.state) {
+            console.log(`目标state为空`);
+        }
+        else {
+            SPA_Render(currentPath, () => {
+                // 跳转到标题处
+                if(pageId === "blog" || pageId === "wiki") {
+                    $('html').scrollTop(prevScrollY);
+                }
+            });
+        }
+    };
+
+    $(window).resize();
+    $(window).scroll();
+
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+<script src="../script/framework/jquery/jquery.easing.js"></script>
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<p style="text-align: center;">
+    <button id="origin" class="MikumarkButton">原图</button>
+    <button id="addWatermark" class="MikumarkButtonYellow">加水印</button>
+    <button id="showWatermark" class="MikumarkButton">查看水印</button>
+</p>
+
+<canvas id="cv" style="width:256px;height:256px;" width="256" height="256"></canvas>
+
+<canvas id="wm" style="width:256px;height:256px;display: none;" width="256" height="256"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/signal.js"></script>
+<script src="../script/image.js"></script>
+<script src="../script/jpeg.js"></script>
+<script src="../script/canvas.js"></script>
+<script>
+
+$(function() {
+
+const ImagePath = "../image/resource/text-scan.jpg";
+const WatermarkPath = "../image/resource/watermark.png";
+
+let cv = new Canvas('cv', [0,0], [255,255]);
+
+function loadImage(src, cb) {
+    let lena = document.createElement('img');
+    lena.src = src;
+    lena.addEventListener("load", function() {
+        cv.context.drawImage(lena, 0, 0);
+        cb();
+    });
+}
+
+setTimeout(()=>{loadImage(ImagePath, ()=>{});}, 0);
+
+document.getElementById('origin').addEventListener('click', ()=>{
+    loadImage(ImagePath, ()=>{});
+});
+
+document.getElementById('addWatermark').addEventListener('click', ()=>{
+    loadImage(ImagePath, ()=>{
+        let wmcv = new Canvas('wm', [0,0], [255,255]);
+        let wm = document.createElement('img');
+        wm.src = WatermarkPath;
+        wm.addEventListener("load", function() {
+            wmcv.context.drawImage(wm, 0, 0);
+            let WMRGB = wmcv.ReadRGB();
+
+            let RGB = cv.ReadRGB();
+            let R_spect = DCT2dSquare(RGB.R);
+            let G_spect = DCT2dSquare(RGB.G);
+            let B_spect = DCT2dSquare(RGB.B);
+
+            // 加水印
+            const energy = -2;
+            R_spect.map((v,i)=>{ return (WMRGB.R.data[i] < 255) ? (20  * energy) : v; });
+            G_spect.map((v,i)=>{ return (WMRGB.R.data[i] < 255) ? (200 * energy) : v; });
+            B_spect.map((v,i)=>{ return (WMRGB.R.data[i] < 255) ? (255 * energy) : v; });
+
+            cv.DrawRGB({
+                R: IDCT2dSquare(R_spect),
+                G: IDCT2dSquare(G_spect),
+                B: IDCT2dSquare(B_spect)
+            });
+        });
+    });
+});
+
+document.getElementById('showWatermark').addEventListener('click', ()=>{
+    let RGB = cv.ReadRGB();
+    cv.DrawRGB({
+        R: DCT2dSquare(RGB.R),
+        G: DCT2dSquare(RGB.G),
+        B: DCT2dSquare(RGB.B)
+    });
+});
+
+});
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
