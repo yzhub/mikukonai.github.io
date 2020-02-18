@@ -9,6 +9,7 @@
 
 # 拾零
 
+- [阿波罗制导计算机](https://en.wikipedia.org/wiki/Apollo_Guidance_Computer)（[在线模拟器](https://svtsim.com/moonjs/agc.html)）
 - #(马赫环)#
 - 日本东京#(首都圈外郭放水路工程)#
 - #(MOOSE)#空间救援设备
