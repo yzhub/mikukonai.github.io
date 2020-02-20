@@ -28,3 +28,14 @@
 - [蓝眼岛民问题](https://terrytao.wordpress.com/2008/02/05/the-blue-eyed-islanders-puzzle/)
 - [共有知识与公共知识到底有什么区别](https://www.zhihu.com/question/22333045)
 - [有哪些看似很傻，实则聪明的行为？](https://www.zhihu.com/question/60809486/answer/254360593)
+
+## GB/T 7714 实施说明：关于文献类型代码
+
+- M包括小册子、单行本
+- C、G、N、EB一般不用
+- J除期刊论文外，还包括各类来路不明的，但是按照论文格式撰写的文章
+- R包括胶片、讲义等，还包括各类名为“白皮书”“报告”的材料
+- DB还包括语料、数据
+- 不使用载体代码
+
+![GB/T 7714 附录](./image/wiki/N/GBT7714文献类型代码.png)
