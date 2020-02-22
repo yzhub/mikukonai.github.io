@@ -2,7 +2,7 @@
 #!title:    小米 CC9 Pro 印象
 #!date:     2020-02-16
 #!authors:  Mikukonai
-#!cover:    ./image/wiki/Q/MiCC9/Mi-CC9-Pro-Green.jpg
+#!cover:    ./image/assets/Q/MiCC9/Mi-CC9-Pro-Green.jpg
 #!type:     原创
 #!tags:     Q
 
@@ -24,7 +24,7 @@
 
 # 外观
 
-![正反面外观](./image/wiki/Q/MiCC9/MiCC9.jpg)
+![正反面外观](./image/assets/Q/MiCC9/MiCC9.jpg)
 
 - 后感颜色是一种偏蓝的绿色，与其说是绿色，不如说是蓝绿色。
 - 小米的品牌标识并非传统的“MI”，而是小写拼音“xiaomi”。
@@ -34,7 +34,7 @@
 
 # 内部结构
 
-![内部结构。图片来自小米手机官方微博](./image/wiki/Q/MiCC9/Mi-CC9-Pro-Tearup.jpg)
+![内部结构。图片来自小米手机官方微博](./image/assets/Q/MiCC9/Mi-CC9-Pro-Tearup.jpg)
 
 - 从拆机图和拆机视频可以看出，内部结构十分紧凑、漂亮，做工也非常精湛。
 - 主摄体积异常巨大。五颗后摄占据了机身内部很大一部分空间。

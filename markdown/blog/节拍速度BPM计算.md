@@ -52,7 +52,7 @@
 
 ## 算法与实现
 
-![星の在り処 频谱](./image/wiki/M/hoshinoarika-spectrum.png)
+![星の在り処 频谱](./image/assets/M/hoshinoarika-spectrum.png)
 
 其实一句话就够了……就是对声谱图求一次频谱，取最值点对应的频率为BPM结果。
 

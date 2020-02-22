@@ -23,7 +23,7 @@ Galileo（一代）是Intel进军IoT开发板市场的首款产品，所以设�
 
 大厂积重难返，这也许是Intel在IoT下游碰一鼻子灰的原因所在。在IoT这个领域，我个人更看好小米。小米从一开始就不是什么手机厂商，小米的志向是真正的万物互联——这才是真正的生态系统。雷总技术出身，仰望星空和脚踏实地兼备，比某某某不知道高到哪里去了。
 
-![图1 Galileo Gen1 正面SoC特写](./image/wiki/C/galileo-soc.jpg)
+![图1 Galileo Gen1 正面SoC特写](./image/assets/C/galileo-soc.jpg)
 
 # 1.上手准备
 
@@ -33,13 +33,13 @@ Galileo板子非常漂亮，尺寸比Arduino和树莓派略大，但也只是手
 
 拿到一块开发板，或者说任何一个系统，首先要了解的就是它提供怎样的接口。图2是Galileo开发板提供的接口和主要板载设施。
 
-![图2 Galileo Gen1接口示意[[5]](#参考资料与文献)](./image/wiki/C/galileo-components.jpg)
+![图2 Galileo Gen1接口示意[[5]](#参考资料与文献)](./image/assets/C/galileo-components.jpg)
 
 作为一款比较高端的开发板，Galileo支持以太网、RS232（虽然并没有什么卵用）、USB2.0、PCIe等多种高级接口，尤其是PCIe接口，大大增强了Galileo的可拓展性。关于接口的细节问题，例如GPIO的驱动能力、跳线设置等，在英特尔提供的Datasheet[[4]](#参考资料与文献)和使用说明书[[5]](#参考资料与文献)中都有比较详细的说明。这里需要说明的是，Quark SoC只提供了两个支持外部中断的GPIO（位于Arduino IO 2、3），其余所有GPIO和PWM都是由CY8C9540A扩展芯片从I2C总线（100kHz）上扩展出来的。因此，这种设计尽管很好地保护了SoC，也提供了多电平兼容的能力，但是带来的性能损失是非常严重的，甚至无法软件实现1-wire总线这样的逻辑（见参考资料[[6]](#参考资料与文献)[[7]](#参考资料与文献)），因此英特尔在Galileo Gen2中对IO扩展电路作了重大修改，极大地提高了IO性能。资料[[2]](#参考资料与文献)中详细评估了Gen2的性能提升水平。
 
 为了理解Galileo的奇葩设计，必须有系统框图（图3）才能理解这里面的细节。
 
-![图3 Galileo Gen1系统框图[[4]](#参考资料与文献)](./image/wiki/C/galileo-diagram.jpg)
+![图3 Galileo Gen1系统框图[[4]](#参考资料与文献)](./image/assets/C/galileo-diagram.jpg)
 
 另一点比较奇葩的是，比较重要的串口竟然使用3.5毫米音频接口，RS232电平，这可以说是非常反人类了。尽管这种设计并非不常见，但对于一款2013年出品的开发板来说，对开发者是非常不友好的。Gen2则知趣地取消了这个设计，改为开发者喜闻乐见的TTL串口插针。Edison的底板则更为人性化，自带串口转USB的FT232模块，非常方便。
 
@@ -230,7 +230,7 @@ echo 1 > /sys/class/gpio/gpio3/value
 
 将点亮板子上的LED。Arduino库的digitalWrite等函数的内部本质上就是这样的文件操作。但由于Quark内部的GPIO有两种，板子上的选通关系也比较复杂，所以接口内部的实现也有一些比较复杂的细节。参考资料[[2，3]](#参考资料与文献)详细分析了Linux系统中GPIO操作的原理，值得一读。
 
-![图4 GPIO编号的对应关系](./image/wiki/C/galileo-io.png)
+![图4 GPIO编号的对应关系](./image/assets/C/galileo-io.png)
 
 I<sup>2</sup>C和SPI按照通常方法即可操作，唯一需要注意的是板子上有个跳线用来控制I/O扩展器的I<sup>2</sup>C地址。GitHub上已经积累了若干器件的API，直接拿来用就可以了。
 
@@ -257,7 +257,7 @@ cv2.imwrite("/home/root/haruhi2.png", frame, [int(cv2.IMWRITE_PNG_COMPRESSION), 
 
 至于C语言的OpenCV使用，可以参考《Intel Edison智能硬件开发指南》书中的讲解，示例代码在 https://github.com/cheaven/edison_native 。
 
-![图5 对摄像头捕捉的图像作Canny卷积，实时输出在SSD1306屏幕上](./image/wiki/C/galileo-opencv-canny.jpg)
+![图5 对摄像头捕捉的图像作Canny卷积，实时输出在SSD1306屏幕上](./image/assets/C/galileo-opencv-canny.jpg)
 
 ## 2.3 使用Node.js开发物联网应用
 

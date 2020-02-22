@@ -21,7 +21,7 @@
 
 MP3比特流是由一连串的帧（frame）构成的。每个帧的结构如下图。
 
-![ ](./image/wiki/M/mp3-frame.png)
+![ ](./image/assets/M/mp3-frame.png)
 
 图中Header是帧头，描述了比特率、采样率、声道数等基本信息。之所以每一帧都要带上这些信息，一方面是应用场景决定的，比如流媒体、实时通信场景，一般不会事先约定这些信息。另一方面是对于VBR模式，每一帧的实际码率都可能不一样，因此需要单独声明。
 
@@ -49,7 +49,7 @@ frameLength = (bitRate * 1152) / sampleRate + (paddingSlot * 8)
 
 图中竖直的红线代表 MainData 的起始点，之所以特别标注，是因为这个起始点一般位于本帧帧头的前面，也就是上一帧的位置。MainData起始点距离边信息SideInfo结束位置的向左的偏移量（字节），记录在边信息的main_data_begin字段，其最大值为511，意味着MainData最多偏移511字节。这个偏移量的确定方法，就是本文所讲的比特储备机制。
 
-![ ](./image/wiki/M/mp3-main-data-begin.png)
+![ ](./image/assets/M/mp3-main-data-begin.png)
 
 ## 2.2 量化与熵编码
 

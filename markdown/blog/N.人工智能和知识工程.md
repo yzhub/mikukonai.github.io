@@ -38,4 +38,4 @@
 - DB还包括语料、数据
 - 不使用载体代码
 
-![GB/T 7714 附录](./image/wiki/N/GBT7714文献类型代码.png)
+![GB/T 7714 附录](./image/assets/N/GBT7714文献类型代码.png)

@@ -5,7 +5,7 @@
 #!type:     C
 #!tags:     
 
-#!{ImagePath}:./image/wiki/C/mp3
+#!{ImagePath}:./image/assets/C/mp3
 
 #!content
 
