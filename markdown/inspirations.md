@@ -3,10 +3,9 @@
 @date: Project Aurora V3
 @imageURL:
 
-<strong>【知识管理方针】</strong>
+<strong>【知识管理方针：有用·有序·安全】</strong>
 
-精简盘活存量，严格控制增量。
-合理高效归类，保证知识有用、有序、安全。
+盘活存量 / 控制增量 / 合理归类 / 妥善保存
 
 <strong>【学习观】</strong>
 
