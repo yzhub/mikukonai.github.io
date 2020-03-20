@@ -66,7 +66,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-size: var(--p_font_size);
         line-height: var(--p_line_height);
         word-wrap: break-word;
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
 }
 @media(max-width:650px) { /* Mobile */
@@ -77,7 +77,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-size: var(--p_font_size);
         line-height: var(--p_line_height);
         word-wrap: break-word;
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
 }
 
@@ -234,7 +234,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
     blockquote.MikumarkBlockquote ul.MikumarkList,
     blockquote.MikumarkBlockquote ol.MikumarkList {
@@ -258,7 +258,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
     blockquote.MikumarkBlockquote ul.MikumarkList,
     blockquote.MikumarkBlockquote ol.MikumarkList {
