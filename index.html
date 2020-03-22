@@ -42,7 +42,7 @@
         <div class="StickyNavbar">
             <button id="MenuButton" class="MenuButton" data-state="off">menu</button>
             <nav class="Navbar" id="MenuNavbar" style="top: 40px; z-index: 100000; border: none;">
-                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="gallery">分 享</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
             </nav>
         </div>
         <!--菜单主题内容，一般是目录。由SPA_Render插入相应的锚点。-->
@@ -60,7 +60,7 @@
     <header class="Header SPA_TITLE_CONTAINER"></header>
     <!--导航栏-->
     <nav class="Navbar" id="MainNavbar">
-        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="gallery">分 享</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
     </nav>
     <!--正文内容-->
     <article class="Article SPA_MAIN_CONTAINER"></article>
@@ -160,6 +160,372 @@
 
 
 
+<!--Gallery模板-->
+<template id="gallery">
+<style>
+.BookmarkTitle { text-align: center; font-size: 16px; color: #66bbdd; margin: 20px 0 20px 0; padding: 10px 0 10px 0; background: linear-gradient(90deg, #ffffff, #f0faff, #ffffff);}
+.BookmarkTableContainer { margin: 15px 5px 15px 5px;}
+.BookmarkTable { width: 100%; font-size: 14px; color:#888888; table-layout:fixed;}
+@media(max-width:650px){ /* Mobile */.BookmarkTable { font-size: 13px;}}
+.BookmarkTable td { text-align: center; line-height: 22px; height: 36px;}
+.BookmarkTable a { text-decoration: none; color:#111111; cursor: pointer;}
+.BookmarkTable a:hover { color:#aaaaaa;}
+.BookmarkTable td:first-child { padding-right: 15px; text-align: right;}
+.BookmarkTable td:last-child { padding-left: 15px; text-align: left;}
+.Cover {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+</style>
+
+    <div class="AboutContent">本栏目施工中，计划做成影音动画书籍的安利栏目<br>名称暂定为“分享”，页面ID为gallery</div>
+
+    <div>
+        <div class="BookmarkTitle">音 乐</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/星の在り処.jpg"></td>
+                    <td><b>星の在り処</b> / う〜み<br>空轨FC初回特典CD<br>游戏「空之轨迹FC」主题歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Scarlet-Destiny.jpg"></td>
+                    <td><b>虹のカメリア</b> / Sensitive Heart<br>Scarlet Destiny<br><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館 ~ Chinese Tea</a> 同人作品</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/花天月地.jpg"></td>
+                    <td><b>桜花繚乱</b> / はちみつれもん<br>花天月地<br><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚 ~ Flower of Japan</a> 同人作品</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/東方フィルハーモニー交響楽団-4-永＆萃.jpg"></td>
+                    <td><b>東方萃夢想</b> / 交響アクティブNEETs<br>東方フィルハーモニー交響楽団 4 永＆萃<br><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a> 同人作品</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Remember.jpg"></td>
+                    <td><b>Remember</b> / Uru<br>Remember<br>剧场版动画「夏目友人帐·缘结空蝉」主题歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/春のかたみ.jpg"></td>
+                    <td><b>春のかたみ</b> / Uru<br>春のかたみ<br>动画「怪~ayakashi~」主题歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/三月雨.jpg"></td>
+                    <td><b>春来发几枝</b> / 泠鸢yousa×Days乐团<br>三月雨</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/蚍蜉渡海.jpg"></td>
+                    <td><b>裁梦为魂</b> / 银临<br>蚍蜉渡海</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Imaginary-ENOZ-featuring-HARUHI.jpg"></td>
+                    <td><b>God knows…</b> / 平野綾<br>Imaginary ENOZ featuring HARUHI<br>动画「凉宫春日的忧郁」插入歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/TOKYO.jpg"></td>
+                    <td><b>TOKYO</b> / YUI<br>TOKYO</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg"></td>
+                    <td><b>黒翼は～と</b> / Rosebleu<br>Tiny Dungeon - BLACK and WHITE OST<br>游戏「小地牢·黑与白」主题歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/光るなら.jpg"></td>
+                    <td><b>光るなら</b> / Goose house<br>光るなら<br>动画「四月是你的谎言」主题歌</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/谭某某.jpg"></td>
+                    <td><b>如果有来生</b> / 谭维维<br>谭某某</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/欧若拉.jpg"></td>
+                    <td><b>欧若拉</b> / 张韶涵<br>欧若拉</td>
+                </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <div class="BookmarkTitle">动 画</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/涼宮ハルヒの憂鬱.jpg"></td>
+                    <td><b>涼宮ハルヒの憂鬱</b><br>凉宫春日的忧郁</td>
+                    <td>2015</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/四月は君の嘘.jpg"></td>
+                    <td><b>四月は君の嘘</b><br>四月是你的谎言</td>
+                    <td>2015</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/夏目友人帳.jpg"></td>
+                    <td><b>夏目友人帳</b><br>夏目友人帐</td>
+                    <td>2015</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/花咲くいろは.jpg"></td>
+                    <td><b>花咲くいろは</b><br>花开伊吕波</td>
+                    <td>2016</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/ノラガミ.jpg"></td>
+                    <td><b>ノラガミ</b><br>野良神</td>
+                    <td>2016</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/小林さんちのメイドラゴン.jpg"></td>
+                    <td><b>小林さんちのメイドラゴン</b><br>小林家的龙女仆</td>
+                    <td>2017</td>
+                </tr>
+
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/少女終末旅行.jpg"></td>
+                    <td><b>少女終末旅行</b><br>少女终末旅行</td>
+                    <td>2017</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/日常.jpg"></td>
+                    <td><b>日常</b><br>日常</td>
+                    <td>2019</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <div class="BookmarkTitle">博 客<div style="font-size: 10px; color: #bbbbbb; padding-top: 5px;">以下链接没有顺序</div></div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td>王垠<a target="_blank" href="http://www.yinwang.org/">博客</a>/<a target="_blank" href="https://docs.huihoo.com/homepage/shredderyin/">主页</a></td>
+                    <td><a target="_blank" href="http://mindhacks.cn/">刘未鹏</a></td>
+                    <td><a target="_blank" href="https://fwjmath.wordpress.com/">fwjmath</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.csksoft.net/">陈士凯</a></td>
+                    <td><a target="_blank" href="http://www.changhai.org/">卢昌海</a></td>
+                    <td><a target="_blank" href="https://blog.csdn.net/lipengcn">TangowL</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://isux.tencent.com/">腾讯ISUX</a></td>
+                    <td><a target="_blank" href="http://madebyevan.com/">Evan Wallace</a></td>
+                    <td><a target="_blank" href="http://blog.openkg.cn/">OpenKG</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.hyperiats.com/">风舞幻城</a></td>
+                    <td><a target="_blank" href="http://norvig.com/">Peter Norvig</a></td>
+                    <td><a target="_blank" href="http://matt.might.net/">Matt Might</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.hankcs.com/">码农场</a></td>
+                    <td><a target="_blank" href="https://hcc.trilines.net/">Hingchung Chu</a></td>
+                    <td><a target="_blank" href="http://www.matrix67.com/">Matrix67</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.codingnow.com/">云风</a></td>
+                    <td><a target="_blank" href="https://techsingular.net/">技术奇异点</a></td>
+                    <td><a target="_blank" href="http://www.staroceans.org/">staroceans</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="BookmarkTitle">工具和备忘</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><a target="_blank" href="http://www.iqdb.org/">图片检索</a></td>
+                    <td><a target="_blank" href="http://waifu2x.udp.jp/">动画图片SRR</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.bottlecaps.de/rr/ui">Railroad Diagram</a></td>
+                    <td><a target="_blank" href="http://nipponcolors.com/">Nippon Iro</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://playground.tensorflow.org/">Neural Network</a></td>
+                    <td><a target="_blank" href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html">数据结构可视化</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.json.cn/">JSON格式化</a></td>
+                    <td><a target="_blank" href="https://www.iconfont.cn/">阿里巴巴矢量图标库</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.colorhexa.com/">ColorHexa</a></td>
+                    <td><a target="_blank" href="http://ed6.orangeclk.com/">空之轨迹攻略</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="BookmarkTitle">硬件 · 电子</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><a target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
+                    <td><a target="_blank" href="https://www.cnvintage.org/">cnVintage</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://bideyuanli.com/">比的原理</a></td>
+                    <td><a target="_blank" href="http://vgmdb.net/db/main.php">VGMdb</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.alldatasheet.com/">ALLDATASHEET</a></td>
+                    <td><a target="_blank" href="http://hitmen.c02.at/files/yapspd/psp_doc/">PSP文档</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.beis.de/Elektronik/DeltaSigma/DeltaSigma.html">Delta-Sigma介绍</a></td>
+                    <td><a target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.datamath.org/Graphing/JPEG_NSpire_CAS.htm">NSpire拆机图赏</a></td>
+                    <td><a target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://wikidevi.com/">WikiDevi</a></td>
+                    <td><a target="_blank" href="http://www.soomal.com/">数码多</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://wiki.friendlyarm.com/wiki/index.php/Main_Page">友善Wiki</a></td>
+                    <td><a target="_blank" href="http://vocakey.info/">VOCAKEY</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="BookmarkTitle">巴 别 塔</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><a target="_blank" href="http://e-dictionary.apc.gov.tw/">台湾原住民族语言词典</a></td>
+                    <td><a target="_blank" href="https://web.klokah.tw/">族語E樂園</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://htq.minpaku.ac.jp/databases/rGyalrong/">嘉绒语数据库</a></td>
+                    <td><a target="_blank" href="http://ccdc.fudan.edu.cn/bases/index.jsp">复旦东亚语言研究中心</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://ckipsvr.iis.sinica.edu.tw/">中央研究院中文NLP相关</a></td>
+                    <td><a target="_blank" href="http://nlp.csai.tsinghua.edu.cn/">清华NLP</a> | <a target="_blank" href="https://jiuge.thunlp.cn/">作诗机器人</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="BookmarkTitle">大 千 世 界</div>
+        <div class="BookmarkTableContainer">
+            <table class="BookmarkTable">
+                <tr>
+                    <td><a target="_blank" href="https://sicp.readthedocs.io/en/latest/">SICP解题集</a></td>
+                    <td><a target="_blank" href="http://okmij.org/ftp/">okmij.org</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.braeunig.us/space/index.htm">火箭和空间技术</a></td>
+                    <td><a target="_blank" href="http://www.linked-brain-data.org/">脑科学数据库</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://himawari8.nict.go.jp/">向日葵8号实时云图</a></td>
+                    <td><a target="_blank" href="https://earth.nullschool.net/">全球气象可视化</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://marxists.anu.edu.au/chinese/">中文马克思主义文库</a></td>
+                    <td><a target="_blank" href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/">区划代码</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.wikidata.org/wiki/Q13">WikiData</a></td>
+                    <td><a target="_blank" href="https://www.langchao.org/">浪潮</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://ddrk.me/">番组</a></td>
+                    <td><a target="_blank" href="http://www.mcescher.com/">艾舍尔官方网站</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.kegg.jp/">KEGG</a></td>
+                    <td><a target="_blank" href="http://biochemical-pathways.com/">罗氏代谢路径图</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.wikipathways.org/">WikiPathways</a></td>
+                    <td><a target="_blank" href="http://rosettacode.org/">Rosetta Code</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://thwiki.cc/">THBwiki</a></td>
+                    <td><a target="_blank" href="https://zh.moegirl.org/">萌娘百科</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="http://www.ucdrs.superlib.net/">全国图书馆参考咨询联盟</a></td>
+                    <td><a target="_blank" href="https://vcb-s.com/">VCB-Studio</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://beautifulracket.com/">Beau­tiful Racket</a></td>
+                    <td><a target="_blank" href="http://sheet.stdioa.com/">StdioA的乐谱分享站</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://aidn.jp/mikutap/">MikuTap</a></td>
+                    <td><a target="_blank" href="https://explainshell.com">explainshell</a></td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://unicode-table.com/cn">Unicode字符百科</a></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</template>
+
 
 <!--"关于"模板-->
 <template id="about">
@@ -192,26 +558,22 @@
         <tr>
             <td><a target="_blank" href="https://tcxx.info/">甜欣屋</a></td>
             <td><a target="_blank" href="https://meow3.family.blog/">惡魔菌</a></td>
-            <td><a target="_blank" href="https://tql.ink/">Akkariin</a></td>
-        </tr>
-        <tr>
             <td><a target="_blank" href="http://www.qiutianaimeili.com/">秋天爱美丽</a></td>
-            <td><a target="_blank" href="https://chanshiyu.com/">蝉時雨</a></td>
-            <td><a target="_blank" href="https://razertory.me/">Razertory</a></td>
+            <!-- <td><a target="_blank" href="https://tql.ink/">Akkariin</a></td> -->
         </tr>
         <tr>
+            <td><a target="_blank" href="https://chanshiyu.com/">蝉時雨</a></td>
             <td><a target="_blank" href="https://ssshooter.com/">UsubeniFantasy</a></td>
             <td><a target="_blank" href="http://yuki.systems/">Brethland</a></td>
-            <td><a target="_blank" href="http://pixelart.cn/">像素艺术</a></td>
         </tr>
         <tr>
+            <td><a target="_blank" href="http://pixelart.cn/">像素艺术</a></td>
             <td><a target="_blank" href="https://www.imalan.cn/">三无计划</a></td>
             <td><a target="_blank" href="https://ntzyz.io">ntzyz</a></td>
-            <td><a target="_blank" href="https://wenzhao-xiang.github.io/Blog/">Winzzzzard</a></td>
         </tr>
         <tr>
-            <td></td>
-            <td><a target="_blank" href="https://blog.geekinney.com/">Geekinney</a></td>
+            <td><a target="_blank" href="https://wenzhao-xiang.github.io/Blog/">Winzzzzard</a></td>
+            <td><a target="_blank" href="https://geekinney.com/">Geekinney</a></td>
             <td></td>
         </tr>
     </table>
@@ -227,18 +589,23 @@
         </div>
     </div>
 
+    <div class="AboutTitle" id="aboutSite">关 于 本 站</div>
+    <div class="AboutContent"><img src="./image/pa-icon.jpg" style="width:45px; height: 45px;"><br><span style="color:#888888; font-size:10px;">本站由 Iroha V4.1 驱动</span></div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">宗旨·功能</p>
+        <p class="AboutChangelog">个人博客 / 知识管理 / 交流分享 / 前端实践<br>不支持的功能：全文检索 / 留言 / RSS</p>
+    </div>
+    <div class="AboutEdition">
+        <p class="AboutVernum">技术·设计</p>
+        <p class="AboutChangelog">纯静态博客 / 托管于 GitHub Page<br>基于自主开发的博客框架 <a class="AboutLink" href="https://github.com/mikukonai/Iroha" target="_blank">Iroha</a><br>建议使用字体：<a class="AboutLink" href="https://github.com/be5invis/Sarasa-Gothic" target="_blank">更纱黑体</a>或微软雅黑</p>
+    </div>
+
     <div class="AboutTitle" id="copyright">权 利 声 明</div>
     <div class="AboutContent">版权所有 &copy; 2016-<span class="CopyrightYear"></span> Mikukonai</div>
     <div class="AboutContent" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署作者名或链接 & ②非盈利用途 & ③无实质性修改<br>的前提下使用和传播。</div>
     <div class="AboutContent" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
 
     <div class="AboutTitle" id="changelog">版 本 记 录</div>
-
-    <div class="AboutContent"><img src="./image/pa-icon.jpg" style="width:45px; height: 45px;"><br><span style="color:#888888">Project Aurora V4.0</span></div>
-
-    <div class="AboutContent">
-        【<a class="AboutLink" href="https://github.com/mikukonai/mikukonai.github.io" target="_blank">Git仓库</a>】
-    </div>
     <div class="AboutEdition">
         <p class="AboutVernum">V0.1<span style="color:#888888;padding-left: 15px;">2016.11.24</span></p>
         <p class="AboutChangelog">试验性的简单个人主页</p>
@@ -249,11 +616,11 @@
     </div>
     <div class="AboutEdition">
         <p class="AboutVernum">V2.0<span style="color:#888888;padding-left: 15px;">2018.02.04</span></p>
-        <p class="AboutChangelog">响应式布局<br>使用自主实现的MD解析器</p>
+        <p class="AboutChangelog">响应式布局<br>使用自主实现的Markdown解析器</p>
     </div>
     <div class="AboutEdition">
         <p class="AboutVernum">V3.0<span style="color:#888888;padding-left: 15px;">2018.07.26</span></p>
-        <p class="AboutChangelog">博客更名“Project Aurora”<br>精简内容和结构，重新设计样式</p>
+        <p class="AboutChangelog">博客更名“Project Aurora”<br>开始采用 Material Design 设计风格</p>
     </div>
     <!--
     <div class="AboutEdition">
@@ -271,11 +638,11 @@
     -->
     <div class="AboutEdition">
         <p class="AboutVernum">V4.0<span style="color:#888888;padding-left: 15px;">2019.10.23</span></p>
-        <p class="AboutChangelog">彻底重构博客框架<br>增加灵感目录和标签索引功能<br>增加个人Wiki功能</p>
+        <p class="AboutChangelog">博客框架全面重构<br>增加灵感目录和标签索引功能<br>增加个人Wiki功能</p>
     </div>
     <div class="AboutEdition">
         <p class="AboutVernum">V4.1<span style="color:#888888;padding-left: 15px;">2020.02.14</span></p>
-        <p class="AboutChangelog">【当前版本】<br>剥离博客框架Iroha<br>优化灵感目录的布局</p>
+        <p class="AboutChangelog">【当前版本】<br>剥离博客框架 Iroha<br>优化灵感目录的布局<br>Wiki与博客合二为一</p>
     </div>
 
     <div class="AboutTitle" id="hoshinoarika">星 之 所 在<div class="AboutSubtitle">星の在り処 ❤ RPG《英雄传说VI·空之轨迹》主题歌</div></div>
@@ -309,6 +676,7 @@
 <template id="index-titlebg">        url(./image/cover/titlebg-index.jpg) </template>
 <template id="inspirations-titlebg"> url(./image/cover/titlebg-inspiration.jpg) </template>
 <template id="blog-titlebg">         url(./image/cover/titlebg-blog.jpg) </template>
+<template id="gallery-titlebg">      url(./image/cover/titlebg-gallery.jpg) </template>
 <template id="about-titlebg">        url(./image/cover/titlebg-about.jpg) </template>
 
 <!--Header模板-->
@@ -316,6 +684,7 @@
 <template id="index-title">        <div class="HeaderTitleCenter"><b>Project Aurora</b><div class="HeaderSubtitleCenter">- 仁者心动 -</div></div> </template>
 <template id="inspirations-title"> <div class="HeaderTitleLeft">灵感</div> </template>
 <template id="blog-title">         <div class="HeaderTitleLeft">博客</div> </template>
+<template id="gallery-title">      <div class="HeaderTitleLeft">分享</div> </template>
 <template id="about-title">        <div class="HeaderTitleLeft">关于</div> </template>
 
 
