@@ -14,3 +14,15 @@
 
 # 专题
 
+## Vocaloid日语音标
+
+![ ](./image/assets/J/Vocaloid日语音标.png)
+
+## 形象风格坐标
+
+![形象风格坐标，出处不详](./image/assets/J/形象风格坐标.jpg)
+
+## 京都脸
+
+![ ](./image/assets/J/京都脸.jpg)
+
