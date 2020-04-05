@@ -152,184 +152,229 @@
 <!--Gallery模板-->
 <template id="gallery">
 <style>
-.BookmarkTitle { text-align: center; font-size: 16px; color: #66bbdd; margin: 20px 0 20px 0; padding: 10px 0 10px 0; background: linear-gradient(90deg, #ffffff, #f0faff, #ffffff);}
-.BookmarkTableContainer { margin: 15px 5px 15px 5px;}
-.BookmarkTable { width: 100%; font-size: 14px; color:#888888; table-layout:fixed;}
-@media(max-width:650px){ /* Mobile */.BookmarkTable { font-size: 13px;}}
-.BookmarkTable td { text-align: center; line-height: 22px; height: 36px;}
-.BookmarkTable a { text-decoration: none; color:#111111; cursor: pointer;}
-.BookmarkTable a:hover { color:#aaaaaa;}
-.BookmarkTable td:first-child { padding-right: 15px; text-align: right;}
-.BookmarkTable td:last-child { padding-left: 15px; text-align: left;}
-.Cover {
-    border: 1px solid #eee;
-    border-radius: 10px;
-    overflow: hidden;
-}
+.Gallery_Block_Header { text-align: center; font-size: 16px; color: #66bbdd; margin: 20px 0 20px 0; padding: 10px 0 10px 0; background: linear-gradient(90deg, #ffffff, #f0faff, #ffffff);}
+.Gallery_Block_Container { margin: 15px 5px 15px 5px;}
+.Gallery_Table { width: 100%; font-size: 14px; color:#888888; table-layout:fixed;}
+@media(max-width:650px){ /* Mobile */.Gallery_Table { font-size: 13px;}}
+.Gallery_Table td { text-align: center; line-height: 22px; height: 36px;}
+.Gallery_Table td:first-child { padding-right: 15px; text-align: right;}
+.Gallery_Table td:last-child { padding-left: 15px; text-align: left;}
+.Gallery_Table_Music td:last-child { padding-left: 0px; text-align: left; width: 60%; }
+
+.Gallary_Cover { border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
+.Gallary_Cover_Music { width: 80px; }
+.Gallary_Cover_Anime { width: 80px; }
+.Gallary_Link { text-decoration:none; border-bottom: 1px dotted #111111; color:#111111; cursor: pointer; }
+.Gallary_Link:hover { text-decoration: none; border-bottom: 1px solid #0066dd; color:#0066dd; cursor: pointer; }
+.Gallery_Title { font-size: 16px; font-weight: bold; color: #233; }
+.Gallery_Subtitle { font-size: 14px; color: #888; }
+.Gallery_Artist { font-size: 12px; color: #555; }
+.Gallery_Album { font-size: 12px; color: #233; }
+.Gallery_Album::before { content: "💿 "; font-size: 12px; }
+.Gallery_Intro { font-size: 12px; color: #233; }
+.Gallery_Intro::before { content: "🔰 "; font-size: 12px; }
 </style>
 
-    <div class="AboutContent">本栏目施工中，计划做成影音动画书籍的安利栏目<br>名称暂定为“分享”，页面ID为gallery</div>
-    <div class="AboutContent">欢迎访问<a class="AboutLink" target="_blank" href="https://bangumi.tv/user/mikukonai">Bangumi</a></div>
+    <div class="AboutContent" style="margin-top: 30px;"><a style="text-decoration: none;" target="_blank" href="https://bangumi.tv/user/mikukonai"><img src="https://bangumi.tv/img/rc3/logo.png"></a></div>
 
     <div>
-        <div class="BookmarkTitle">音 乐</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">音 乐</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table Gallery_Table_Music">
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/星の在り処.jpg"></td>
-                    <td><b>星の在り処</b> / う〜み<br>空轨FC初回特典CD<br>游戏「空之轨迹FC」主题歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/星の在り処.jpg"></td>
+                    <td><span class="Gallery_Title">星の在り処</span> / <span class="Gallery_Artist" lang="ja">う〜み</span>
+                        <br><span class="Gallery_Album">空轨FC初回特典CD</span>
+                        <br><span class="Gallery_Intro">游戏「空之轨迹FC」主题歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Scarlet-Destiny.jpg"></td>
-                    <td><b>虹のカメリア</b> / Sensitive Heart<br>Scarlet Destiny<br><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館 ~ Chinese Tea</a> 同人作品</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Scarlet-Destiny.jpg"></td>
+                    <td><span class="Gallery_Title">虹のカメリア</span> / <span class="Gallery_Artist">Sensitive Heart</span>
+                        <br><span class="Gallery_Album">Scarlet Destiny</span>
+                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館 ~ Chinese Tea</a> 同人作品</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/花天月地.jpg"></td>
-                    <td><b>桜花繚乱</b> / はちみつれもん<br>花天月地<br><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚 ~ Flower of Japan</a> 同人作品</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/花天月地.jpg"></td>
+                    <td><span class="Gallery_Title">桜花繚乱</span> / <span class="Gallery_Artist" lang="ja">はちみつれもん</span>
+                        <br><span class="Gallery_Album">花天月地</span>
+                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚 ~ Flower of Japan</a> 同人作品</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/東方フィルハーモニー交響楽団-4-永＆萃.jpg"></td>
-                    <td><b>東方萃夢想</b> / 交響アクティブNEETs<br>東方フィルハーモニー交響楽団 4 永＆萃<br><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a> 同人作品</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/東方フィルハーモニー交響楽団-4-永＆萃.jpg"></td>
+                    <td><span class="Gallery_Title">東方萃夢想</span> / <span class="Gallery_Artist" lang="ja">交響アクティブNEETs</span>
+                        <br><span class="Gallery_Album">東方フィルハーモニー交響楽団 4 永＆萃</span>
+                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a> 同人作品</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Remember.jpg"></td>
-                    <td><b>Remember</b> / Uru<br>Remember<br>剧场版动画「夏目友人帐·缘结空蝉」主题歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Remember.jpg"></td>
+                    <td><span class="Gallery_Title">Remember</span> / <span class="Gallery_Artist">Uru</span>
+                        <br><span class="Gallery_Album">Remember</span>
+                        <br><span class="Gallery_Intro">剧场版动画「夏目友人帐·缘结空蝉」主题歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/春のかたみ.jpg"></td>
-                    <td><b>春のかたみ</b> / Uru<br>春のかたみ<br>动画「怪~ayakashi~」主题歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/春のかたみ.jpg"></td>
+                    <td><span class="Gallery_Title">春のかたみ</span> / <span class="Gallery_Artist" lang="ja">元ちとせ</span>
+                        <br><span class="Gallery_Album">春のかたみ</span>
+                        <br><span class="Gallery_Intro">动画「怪~ayakashi~」主题歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/三月雨.jpg"></td>
-                    <td><b>春来发几枝</b> / 泠鸢yousa×Days乐团<br>三月雨</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/三月雨.jpg"></td>
+                    <td><span class="Gallery_Title">春来发几枝</span> / <span class="Gallery_Artist" lang="zh-CN">泠鸢yousa×Days乐团</span>
+                        <br><span class="Gallery_Album">三月雨</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/蚍蜉渡海.jpg"></td>
-                    <td><b>裁梦为魂</b> / 银临<br>蚍蜉渡海</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/蚍蜉渡海.jpg"></td>
+                    <td><span class="Gallery_Title">裁梦为魂</span> / <span class="Gallery_Artist" lang="zh-CN">银临</span>
+                        <br><span class="Gallery_Album">蚍蜉渡海</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Imaginary-ENOZ-featuring-HARUHI.jpg"></td>
-                    <td><b>God knows…</b> / 平野綾<br>Imaginary ENOZ featuring HARUHI<br>动画「凉宫春日的忧郁」插入歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Imaginary-ENOZ-featuring-HARUHI.jpg"></td>
+                    <td><span class="Gallery_Title">God knows…</span> / <span class="Gallery_Artist" lang="ja">平野綾</span>
+                        <br><span class="Gallery_Album">Imaginary ENOZ featuring HARUHI</span>
+                        <br><span class="Gallery_Intro">动画「凉宫春日的忧郁」插入歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/TOKYO.jpg"></td>
-                    <td><b>TOKYO</b> / YUI<br>TOKYO</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/TOKYO.jpg"></td>
+                    <td><span class="Gallery_Title">TOKYO</span> / <span class="Gallery_Artist">YUI</span>
+                        <br><span class="Gallery_Album">TOKYO</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg"></td>
-                    <td><b>黒翼は～と</b> / Rosebleu<br>Tiny Dungeon - BLACK and WHITE OST<br>游戏「小地牢·黑与白」主题歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg"></td>
+                    <td><span class="Gallery_Title">黒翼は～と</span> / <span class="Gallery_Artist">Rosebleu</span>
+                        <br><span class="Gallery_Album">Tiny Dungeon - BLACK and WHITE OST</span>
+                        <br><span class="Gallery_Intro">游戏「小地牢·黑与白」主题歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/光るなら.jpg"></td>
-                    <td><b>光るなら</b> / Goose house<br>光るなら<br>动画「四月是你的谎言」主题歌</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/光るなら.jpg"></td>
+                    <td><span class="Gallery_Title">光るなら</span> / <span class="Gallery_Artist">Goose house</span>
+                        <br><span class="Gallery_Album">光るなら</span>
+                        <br><span class="Gallery_Intro">动画「四月是你的谎言」主题歌</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/谭某某.jpg"></td>
-                    <td><b>如果有来生</b> / 谭维维<br>谭某某</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/谭某某.jpg"></td>
+                    <td><span class="Gallery_Title">如果有来生</span> / <span class="Gallery_Artist" lang="zh-CN">谭维维</span>
+                        <br><span class="Gallery_Album">谭某某</span>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/欧若拉.jpg"></td>
-                    <td><b>欧若拉</b> / 张韶涵<br>欧若拉</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/欧若拉.jpg"></td>
+                    <td><span class="Gallery_Title">欧若拉</span> / <span class="Gallery_Artist" lang="zh-CN">张韶涵</span>
+                        <br><span class="Gallery_Album">欧若拉</span>
+                    </td>
                 </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </table>
         </div>
     </div>
 
     <div>
-        <div class="BookmarkTitle">动 画</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">动 画</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/涼宮ハルヒの憂鬱.jpg"></td>
-                    <td><b>涼宮ハルヒの憂鬱</b><br>凉宫春日的忧郁</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/涼宮ハルヒの憂鬱.jpg"></td>
+                    <td><span class="Gallery_Title">涼宮ハルヒの憂鬱</span>
+                        <br><span class="Gallery_Subtitle">Suzumiya Haruhi no Yūutsu</span>
+                        <br><span class="Gallery_Subtitle">凉宫春日的忧郁</span>
+                    </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/四月は君の嘘.jpg"></td>
-                    <td><b>四月は君の嘘</b><br>四月是你的谎言</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/四月は君の嘘.jpg"></td>
+                    <td><span class="Gallery_Title">四月は君の嘘</span>
+                        <br><span class="Gallery_Subtitle">Shigatsu wa Kimi no Uso</span>
+                        <br><span class="Gallery_Subtitle">四月是你的谎言</span>
+                    </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/夏目友人帳.jpg"></td>
-                    <td><b>夏目友人帳</b><br>夏目友人帐</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/夏目友人帳.jpg"></td>
+                    <td><span class="Gallery_Title">夏目友人帳</span>
+                        <br><span class="Gallery_Subtitle">Natsume Yūjinchō</span>
+                        <br><span class="Gallery_Subtitle">夏目友人帐</span>
+                    </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/花咲くいろは.jpg"></td>
-                    <td><b>花咲くいろは</b><br>花开伊吕波</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/氷菓.jpg"></td>
+                    <td><span class="Gallery_Title">氷菓</span>
+                        <br><span class="Gallery_Subtitle">Hyōka</span>
+                        <br><span class="Gallery_Subtitle">冰果</span>
+                    </td>
                     <td>2016</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/ノラガミ.jpg"></td>
-                    <td><b>ノラガミ</b><br>野良神</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/花咲くいろは.jpg"></td>
+                    <td><span class="Gallery_Title">花咲くいろは</span>
+                        <br><span class="Gallery_Subtitle">Hanasaku Iroha</span>
+                        <br><span class="Gallery_Subtitle">花开伊吕波</span>
+                    </td>
                     <td>2016</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/小林さんちのメイドラゴン.jpg"></td>
-                    <td><b>小林さんちのメイドラゴン</b><br>小林家的龙女仆</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/ノラガミ.jpg"></td>
+                    <td><span class="Gallery_Title">ノラガミ</span>
+                        <br><span class="Gallery_Subtitle">Noragami</span>
+                        <br><span class="Gallery_Subtitle">野良神</span>
+                    </td>
+                    <td>2016</td>
+                </tr>
+
+                <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/小林さんちのメイドラゴン.jpg"></td>
+                    <td><span class="Gallery_Title">小林さんちのメイドラゴン</span>
+                        <br><span class="Gallery_Subtitle">Kobayashi Sanchi no Maidragon</span>
+                        <br><span class="Gallery_Subtitle">小林家的龙女仆</span>
+                    </td>
                     <td>2017</td>
                 </tr>
 
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/少女終末旅行.jpg"></td>
-                    <td><b>少女終末旅行</b><br>少女终末旅行</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/少女終末旅行.jpg"></td>
+                    <td><span class="Gallery_Title">少女終末旅行</span>
+                        <br><span class="Gallery_Subtitle">Shōjō Shūmatsu Ryōkō</span>
+                        <br><span class="Gallery_Subtitle">少女终末旅行</span>
+                    </td>
                     <td>2017</td>
                 </tr>
 
                 <tr>
-                    <td><img class="Cover" width="80px" src="./image/assets/J/covers/日常.jpg"></td>
-                    <td><b>日常</b><br>日常</td>
+                    <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/日常.jpg"></td>
+                    <td><span class="Gallery_Title">日常</span>
+                        <br><span class="Gallery_Subtitle">Nichijō</span>
+                        <br><span class="Gallery_Subtitle">日常</span>
+                    </td>
                     <td>2019</td>
                 </tr>
             </table>
@@ -337,177 +382,177 @@
     </div>
 
     <div>
-        <div class="BookmarkTitle">博 客<div style="font-size: 10px; color: #bbbbbb; padding-top: 5px;">以下链接没有顺序</div></div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">博 客<div style="font-size: 10px; color: #bbbbbb; padding-top: 5px;">以下链接没有顺序</div></div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
                 <tr>
-                    <td>王垠<a target="_blank" href="http://www.yinwang.org/">博客</a>/<a target="_blank" href="https://docs.huihoo.com/homepage/shredderyin/">主页</a></td>
-                    <td><a target="_blank" href="http://mindhacks.cn/">刘未鹏</a></td>
-                    <td><a target="_blank" href="https://fwjmath.wordpress.com/">fwjmath</a></td>
+                    <td>王垠<a class="Gallary_Link" target="_blank" href="http://www.yinwang.org/">博客</a>/<a class="Gallary_Link" target="_blank" href="https://docs.huihoo.com/homepage/shredderyin/">主页</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://mindhacks.cn/">刘未鹏</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://fwjmath.wordpress.com/">fwjmath</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.csksoft.net/">陈士凯</a></td>
-                    <td><a target="_blank" href="http://www.changhai.org/">卢昌海</a></td>
-                    <td><a target="_blank" href="https://blog.csdn.net/lipengcn">TangowL</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.csksoft.net/">陈士凯</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.changhai.org/">卢昌海</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://blog.csdn.net/lipengcn">TangowL</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://isux.tencent.com/">腾讯ISUX</a></td>
-                    <td><a target="_blank" href="http://madebyevan.com/">Evan Wallace</a></td>
-                    <td><a target="_blank" href="http://blog.openkg.cn/">OpenKG</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://isux.tencent.com/">腾讯ISUX</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://madebyevan.com/">Evan Wallace</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://blog.openkg.cn/">OpenKG</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.hyperiats.com/">风舞幻城</a></td>
-                    <td><a target="_blank" href="http://norvig.com/">Peter Norvig</a></td>
-                    <td><a target="_blank" href="http://matt.might.net/">Matt Might</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.hyperiats.com/">风舞幻城</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://norvig.com/">Peter Norvig</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://matt.might.net/">Matt Might</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.hankcs.com/">码农场</a></td>
-                    <td><a target="_blank" href="https://hcc.trilines.net/">Hingchung Chu</a></td>
-                    <td><a target="_blank" href="http://www.matrix67.com/">Matrix67</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.hankcs.com/">码农场</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://hcc.trilines.net/">Hingchung Chu</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.matrix67.com/">Matrix67</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.codingnow.com/">云风</a></td>
-                    <td><a target="_blank" href="https://techsingular.net/">技术奇异点</a></td>
-                    <td><a target="_blank" href="http://www.staroceans.org/">staroceans</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div>
-        <div class="BookmarkTitle">工具和备忘</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
-                <tr>
-                    <td><a target="_blank" href="http://www.iqdb.org/">图片检索</a></td>
-                    <td><a target="_blank" href="http://waifu2x.udp.jp/">动画图片SRR</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="http://www.bottlecaps.de/rr/ui">Railroad Diagram</a></td>
-                    <td><a target="_blank" href="http://nipponcolors.com/">Nippon Iro</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="http://playground.tensorflow.org/">Neural Network</a></td>
-                    <td><a target="_blank" href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html">数据结构可视化</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="http://www.json.cn/">JSON格式化</a></td>
-                    <td><a target="_blank" href="https://www.iconfont.cn/">阿里巴巴矢量图标库</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="https://www.colorhexa.com/">ColorHexa</a></td>
-                    <td><a target="_blank" href="http://ed6.orangeclk.com/">空之轨迹攻略</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.codingnow.com/">云风</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://techsingular.net/">技术奇异点</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.staroceans.org/">staroceans</a></td>
                 </tr>
             </table>
         </div>
     </div>
     <div>
-        <div class="BookmarkTitle">硬件 · 电子</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">工具和备忘</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
                 <tr>
-                    <td><a target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
-                    <td><a target="_blank" href="https://www.cnvintage.org/">cnVintage</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.iqdb.org/">图片检索</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://waifu2x.udp.jp/">动画图片SRR</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://bideyuanli.com/">比的原理</a></td>
-                    <td><a target="_blank" href="http://vgmdb.net/db/main.php">VGMdb</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.bottlecaps.de/rr/ui">Railroad Diagram</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://nipponcolors.com/">Nippon Iro</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.alldatasheet.com/">ALLDATASHEET</a></td>
-                    <td><a target="_blank" href="http://hitmen.c02.at/files/yapspd/psp_doc/">PSP文档</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://playground.tensorflow.org/">Neural Network</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html">数据结构可视化</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.beis.de/Elektronik/DeltaSigma/DeltaSigma.html">Delta-Sigma介绍</a></td>
-                    <td><a target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.json.cn/">JSON格式化</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.iconfont.cn/">阿里巴巴矢量图标库</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.datamath.org/Graphing/JPEG_NSpire_CAS.htm">NSpire拆机图赏</a></td>
-                    <td><a target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="https://wikidevi.com/">WikiDevi</a></td>
-                    <td><a target="_blank" href="http://www.soomal.com/">数码多</a></td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="http://wiki.friendlyarm.com/wiki/index.php/Main_Page">友善Wiki</a></td>
-                    <td><a target="_blank" href="http://vocakey.info/">VOCAKEY</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.colorhexa.com/">ColorHexa</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://ed6.orangeclk.com/">空之轨迹攻略</a></td>
                 </tr>
             </table>
         </div>
     </div>
     <div>
-        <div class="BookmarkTitle">巴 别 塔</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">硬件 · 电子</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
                 <tr>
-                    <td><a target="_blank" href="http://e-dictionary.apc.gov.tw/">台湾原住民族语言词典</a></td>
-                    <td><a target="_blank" href="https://web.klokah.tw/">族語E樂園</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.cnvintage.org/">cnVintage</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://htq.minpaku.ac.jp/databases/rGyalrong/">嘉绒语数据库</a></td>
-                    <td><a target="_blank" href="http://ccdc.fudan.edu.cn/bases/index.jsp">复旦东亚语言研究中心</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://bideyuanli.com/">比的原理</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://vgmdb.net/db/main.php">VGMdb</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://ckipsvr.iis.sinica.edu.tw/">中央研究院中文NLP相关</a></td>
-                    <td><a target="_blank" href="http://nlp.csai.tsinghua.edu.cn/">清华NLP</a> | <a target="_blank" href="https://jiuge.thunlp.cn/">作诗机器人</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.alldatasheet.com/">ALLDATASHEET</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://hitmen.c02.at/files/yapspd/psp_doc/">PSP文档</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.beis.de/Elektronik/DeltaSigma/DeltaSigma.html">Delta-Sigma介绍</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.datamath.org/Graphing/JPEG_NSpire_CAS.htm">NSpire拆机图赏</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="https://wikidevi.com/">WikiDevi</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.soomal.com/">数码多</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="http://wiki.friendlyarm.com/wiki/index.php/Main_Page">友善Wiki</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://vocakey.info/">VOCAKEY</a></td>
                 </tr>
             </table>
         </div>
     </div>
     <div>
-        <div class="BookmarkTitle">大 千 世 界</div>
-        <div class="BookmarkTableContainer">
-            <table class="BookmarkTable">
+        <div class="Gallery_Block_Header">巴 别 塔</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
                 <tr>
-                    <td><a target="_blank" href="https://sicp.readthedocs.io/en/latest/">SICP解题集</a></td>
-                    <td><a target="_blank" href="http://okmij.org/ftp/">okmij.org</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://e-dictionary.apc.gov.tw/">台湾原住民族语言词典</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://web.klokah.tw/">族語E樂園</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.braeunig.us/space/index.htm">火箭和空间技术</a></td>
-                    <td><a target="_blank" href="http://www.linked-brain-data.org/">脑科学数据库</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://htq.minpaku.ac.jp/databases/rGyalrong/">嘉绒语数据库</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://ccdc.fudan.edu.cn/bases/index.jsp">复旦东亚语言研究中心</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://himawari8.nict.go.jp/">向日葵8号实时云图</a></td>
-                    <td><a target="_blank" href="https://earth.nullschool.net/">全球气象可视化</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://ckipsvr.iis.sinica.edu.tw/">中央研究院中文NLP相关</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://nlp.csai.tsinghua.edu.cn/">清华NLP</a> | <a class="Gallary_Link" target="_blank" href="https://jiuge.thunlp.cn/">作诗机器人</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="Gallery_Block_Header">大 千 世 界</div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table">
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="https://sicp.readthedocs.io/en/latest/">SICP解题集</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://okmij.org/ftp/">okmij.org</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://marxists.anu.edu.au/chinese/">中文马克思主义文库</a></td>
-                    <td><a target="_blank" href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/">区划代码</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.braeunig.us/space/index.htm">火箭和空间技术</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.linked-brain-data.org/">脑科学数据库</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.wikidata.org/wiki/Q13">WikiData</a></td>
-                    <td><a target="_blank" href="https://www.langchao.org/">浪潮</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://himawari8.nict.go.jp/">向日葵8号实时云图</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://earth.nullschool.net/">全球气象可视化</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://ddrk.me/">番组</a></td>
-                    <td><a target="_blank" href="http://www.mcescher.com/">艾舍尔官方网站</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://marxists.anu.edu.au/chinese/">中文马克思主义文库</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/">区划代码</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.kegg.jp/">KEGG</a></td>
-                    <td><a target="_blank" href="http://biochemical-pathways.com/">罗氏代谢路径图</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.wikidata.org/wiki/Q13">WikiData</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.langchao.org/">浪潮</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.wikipathways.org/">WikiPathways</a></td>
-                    <td><a target="_blank" href="http://rosettacode.org/">Rosetta Code</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://ddrk.me/">番组</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.mcescher.com/">艾舍尔官方网站</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://thwiki.cc/">THBwiki</a></td>
-                    <td><a target="_blank" href="https://zh.moegirl.org/">萌娘百科</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.kegg.jp/">KEGG</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://biochemical-pathways.com/">罗氏代谢路径图</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="http://www.ucdrs.superlib.net/">全国图书馆参考咨询联盟</a></td>
-                    <td><a target="_blank" href="https://vcb-s.com/">VCB-Studio</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://www.wikipathways.org/">WikiPathways</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://rosettacode.org/">Rosetta Code</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://beautifulracket.com/">Beau­tiful Racket</a></td>
-                    <td><a target="_blank" href="http://sheet.stdioa.com/">StdioA的乐谱分享站</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/">THBwiki</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://zh.moegirl.org/">萌娘百科</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://aidn.jp/mikutap/">MikuTap</a></td>
-                    <td><a target="_blank" href="https://explainshell.com">explainshell</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://www.ucdrs.superlib.net/">全国图书馆参考咨询联盟</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://vcb-s.com/">VCB-Studio</a></td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://unicode-table.com/cn">Unicode字符百科</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://beautifulracket.com/">Beau­tiful Racket</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="http://sheet.stdioa.com/">StdioA的乐谱分享站</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="https://aidn.jp/mikutap/">MikuTap</a></td>
+                    <td><a class="Gallary_Link" target="_blank" href="https://explainshell.com">explainshell</a></td>
+                </tr>
+                <tr>
+                    <td><a class="Gallary_Link" target="_blank" href="https://unicode-table.com/cn">Unicode字符百科</a></td>
                     <td></td>
                 </tr>
             </table>
