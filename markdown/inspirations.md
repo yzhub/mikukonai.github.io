@@ -1,6 +1,6 @@
 
 @title: <span style="color:red;">[置顶]</span> 个人知识管理方针·学习观
-@date: Project Aurora V3
+@date: Project Aurora
 @imageURL:
 
 <strong>【知识管理方针：有用·有序·安全】</strong>
@@ -16,7 +16,7 @@
 =======================================================================================
 
 @title: <span style="color:red;">[置顶]</span> 个人财务方针
-@date: Project Aurora V3
+@date: Project Aurora
 @imageURL: 
 
 量入为出，开源节流。账上有钱，心中有数。
