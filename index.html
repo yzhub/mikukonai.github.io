@@ -152,27 +152,40 @@
 <!--Gallery模板-->
 <template id="gallery">
 <style>
-.Gallery_Block_Header { text-align: center; font-size: 16px; color: #66bbdd; margin: 20px 0 20px 0; padding: 10px 0 10px 0; background: linear-gradient(90deg, #ffffff, #f0faff, #ffffff);}
+.Gallery_Block_Header { text-align: center; font-size: 17px; color: #66bbdd; margin: 20px 0 20px 0; padding: 10px 0 10px 0; background: linear-gradient(90deg, #ffffff, #f0faff, #ffffff); }
+.Gallery_Block_Header_Subtitle { font-size: 12px; color: #bbbbbb; padding-top: 5px; font-weight: normal; }
 .Gallery_Block_Container { margin: 15px 5px 15px 5px;}
 .Gallery_Table { width: 100%; font-size: 14px; color:#888888; table-layout:fixed;}
 @media(max-width:650px){ /* Mobile */.Gallery_Table { font-size: 13px;}}
 .Gallery_Table td { text-align: center; line-height: 22px; height: 36px;}
 .Gallery_Table td:first-child { padding-right: 15px; text-align: right;}
 .Gallery_Table td:last-child { padding-left: 15px; text-align: left;}
+.Gallery_Table_Music td:first-child { vertical-align: top; }
 .Gallery_Table_Music td:last-child { padding-left: 0px; text-align: left; width: 60%; }
+.Gallery_Table_Book td:first-child { vertical-align: top; }
+.Gallery_Table_Book td:last-child { padding-left: 0px; text-align: left; width: 60%; }
 
 .Gallary_Cover { border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
-.Gallary_Cover_Music { width: 80px; }
+.Gallary_Cover_Music { width: 90px; }
 .Gallary_Cover_Anime { width: 80px; }
+.Gallary_Cover_Book { width: 80px; border-radius: 0px; }
 .Gallary_Link { text-decoration:none; border-bottom: 1px dotted #111111; color:#111111; cursor: pointer; }
 .Gallary_Link:hover { text-decoration: none; border-bottom: 1px solid #0066dd; color:#0066dd; cursor: pointer; }
 .Gallery_Title { font-size: 16px; font-weight: bold; color: #233; }
 .Gallery_Subtitle { font-size: 14px; color: #888; }
-.Gallery_Artist { font-size: 12px; color: #555; }
+.Gallery_Artist { display: inline-block; font-size: 12px; color: #555; font-weight: normal; }
+.Gallery_Artist::before { content: " / "; font-size: 13px; color: #555; }
 .Gallery_Album { font-size: 12px; color: #233; }
 .Gallery_Album::before { content: "💿 "; font-size: 12px; }
 .Gallery_Intro { font-size: 12px; color: #233; }
 .Gallery_Intro::before { content: "🔰 "; font-size: 12px; }
+.Gallery_Date { font-size: 12px; color: #233; }
+.Gallery_Date::before { content: "📅 "; font-size: 12px; }
+.Gallery_Author { font-size: 13px; color: #233; }
+.Gallery_Press { font-size: 13px; color: #233; }
+.Gallery_EurekaID { font-size: 12px; color: #66bbdd; }
+.Gallery_Category { display: none; }
+
 </style>
 
     <div class="AboutContent" style="margin-top: 30px;"><a style="text-decoration: none;" target="_blank" href="https://bangumi.tv/user/mikukonai"><img src="https://bangumi.tv/img/rc3/logo.png"></a></div>
@@ -183,108 +196,137 @@
             <table class="Gallery_Table Gallery_Table_Music">
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/星の在り処.jpg"></td>
-                    <td><span class="Gallery_Title">星の在り処</span> / <span class="Gallery_Artist" lang="ja">う〜み</span>
-                        <br><span class="Gallery_Album">空轨FC初回特典CD</span>
-                        <br><span class="Gallery_Intro">游戏「空之轨迹FC」主题歌</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">星の在り処</span>
+                        <span class="Gallery_Artist" lang="ja">う〜み</span>
+                        <div class="Gallery_Album" lang="ja">空轨FC初回特典CD</div>
+                        <div class="Gallery_Intro" lang="zh-CN">游戏「空之轨迹FC」主题歌</div>
+                        <!-- <div class="Gallery_Date">2012.9</div> -->
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Scarlet-Destiny.jpg"></td>
-                    <td><span class="Gallery_Title">虹のカメリア</span> / <span class="Gallery_Artist">Sensitive Heart</span>
-                        <br><span class="Gallery_Album">Scarlet Destiny</span>
-                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館 ~ Chinese Tea</a> 同人作品</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">虹のカメリア</span>
+                        <span class="Gallery_Artist">Sensitive Heart</span>
+                        <div class="Gallery_Album">Scarlet Destiny</div>
+                        <div class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館 ~ Chinese Tea</a> 同人作</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/花天月地.jpg"></td>
-                    <td><span class="Gallery_Title">桜花繚乱</span> / <span class="Gallery_Artist" lang="ja">はちみつれもん</span>
-                        <br><span class="Gallery_Album">花天月地</span>
-                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚 ~ Flower of Japan</a> 同人作品</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">桜花繚乱</span>
+                        <span class="Gallery_Artist" lang="ja">はちみつれもん</span>
+                        <div class="Gallery_Album" lang="ja">花天月地</div>
+                        <div class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚 ~ Flower of Japan</a> 同人作</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/東方フィルハーモニー交響楽団-4-永＆萃.jpg"></td>
-                    <td><span class="Gallery_Title">東方萃夢想</span> / <span class="Gallery_Artist" lang="ja">交響アクティブNEETs</span>
-                        <br><span class="Gallery_Album">東方フィルハーモニー交響楽団 4 永＆萃</span>
-                        <br><span class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a> 同人作品</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">東方萃夢想</span>
+                        <span class="Gallery_Artist" lang="ja">交響アクティブNEETs</span>
+                        <div class="Gallery_Album" lang="ja">東方フィルハーモニー交響楽団 4 永＆萃</div>
+                        <div class="Gallery_Intro"><a class="Gallary_Link" target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a> 同人作品</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Remember.jpg"></td>
-                    <td><span class="Gallery_Title">Remember</span> / <span class="Gallery_Artist">Uru</span>
-                        <br><span class="Gallery_Album">Remember</span>
-                        <br><span class="Gallery_Intro">剧场版动画「夏目友人帐·缘结空蝉」主题歌</span>
+                    <td>
+                        <span class="Gallery_Title">Remember</span>
+                        <span class="Gallery_Artist">Uru</span>
+                        <div class="Gallery_Album">Remember</div>
+                        <div class="Gallery_Intro" lang="zh-CN">剧场版「夏目友人帐·缘结空蝉」主题歌</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/春のかたみ.jpg"></td>
-                    <td><span class="Gallery_Title">春のかたみ</span> / <span class="Gallery_Artist" lang="ja">元ちとせ</span>
-                        <br><span class="Gallery_Album">春のかたみ</span>
-                        <br><span class="Gallery_Intro">动画「怪~ayakashi~」主题歌</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">春のかたみ</span>
+                        <span class="Gallery_Artist" lang="ja">元ちとせ</span>
+                        <div class="Gallery_Album" lang="ja">春のかたみ</div>
+                        <div class="Gallery_Intro" lang="zh-CN">动画「怪~ayakashi~」主题歌</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/三月雨.jpg"></td>
-                    <td><span class="Gallery_Title">春来发几枝</span> / <span class="Gallery_Artist" lang="zh-CN">泠鸢yousa×Days乐团</span>
-                        <br><span class="Gallery_Album">三月雨</span>
+                    <td>
+                        <span class="Gallery_Title" lang="zh-CN">春来发几枝</span>
+                        <span class="Gallery_Artist" lang="zh-CN">泠鸢yousa×Days乐团</span>
+                        <div class="Gallery_Album" lang="zh-CN">三月雨</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/蚍蜉渡海.jpg"></td>
-                    <td><span class="Gallery_Title">裁梦为魂</span> / <span class="Gallery_Artist" lang="zh-CN">银临</span>
-                        <br><span class="Gallery_Album">蚍蜉渡海</span>
+                    <td>
+                        <span class="Gallery_Title" lang="zh-CN">裁梦为魂</span>
+                        <span class="Gallery_Artist" lang="zh-CN">银临</span>
+                        <div class="Gallery_Album" lang="zh-CN">蚍蜉渡海</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Imaginary-ENOZ-featuring-HARUHI.jpg"></td>
-                    <td><span class="Gallery_Title">God knows…</span> / <span class="Gallery_Artist" lang="ja">平野綾</span>
-                        <br><span class="Gallery_Album">Imaginary ENOZ featuring HARUHI</span>
-                        <br><span class="Gallery_Intro">动画「凉宫春日的忧郁」插入歌</span>
+                    <td>
+                        <span class="Gallery_Title">God knows…</span>
+                        <span class="Gallery_Artist" lang="ja">平野綾</span>
+                        <div class="Gallery_Album">Imaginary ENOZ featuring HARUHI</div>
+                        <div class="Gallery_Intro" lang="zh-CN">动画「凉宫春日的忧郁」插入歌</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/TOKYO.jpg"></td>
-                    <td><span class="Gallery_Title">TOKYO</span> / <span class="Gallery_Artist">YUI</span>
-                        <br><span class="Gallery_Album">TOKYO</span>
+                    <td>
+                        <span class="Gallery_Title">TOKYO</span>
+                        <span class="Gallery_Artist">YUI</span>
+                        <div class="Gallery_Album">TOKYO</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg"></td>
-                    <td><span class="Gallery_Title">黒翼は～と</span> / <span class="Gallery_Artist">Rosebleu</span>
-                        <br><span class="Gallery_Album">Tiny Dungeon - BLACK and WHITE OST</span>
-                        <br><span class="Gallery_Intro">游戏「小地牢·黑与白」主题歌</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">黒翼は～と</span>
+                        <span class="Gallery_Artist">Rosebleu</span>
+                        <div class="Gallery_Album">Tiny Dungeon - BLACK and WHITE OST</div>
+                        <div class="Gallery_Intro" lang="zh-CN">游戏「小地牢·黑与白」原声音乐</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/光るなら.jpg"></td>
-                    <td><span class="Gallery_Title">光るなら</span> / <span class="Gallery_Artist">Goose house</span>
-                        <br><span class="Gallery_Album">光るなら</span>
-                        <br><span class="Gallery_Intro">动画「四月是你的谎言」主题歌</span>
+                    <td>
+                        <span class="Gallery_Title" lang="ja">光るなら</span>
+                        <span class="Gallery_Artist">Goose house</span>
+                        <div class="Gallery_Album" lang="ja">光るなら</div>
+                        <div class="Gallery_Intro" lang="zh-CN">动画「四月是你的谎言」主题歌</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/谭某某.jpg"></td>
-                    <td><span class="Gallery_Title">如果有来生</span> / <span class="Gallery_Artist" lang="zh-CN">谭维维</span>
-                        <br><span class="Gallery_Album">谭某某</span>
+                    <td>
+                        <span class="Gallery_Title" lang="zh-CN">如果有来生</span>
+                        <span class="Gallery_Artist" lang="zh-CN">谭维维</span>
+                        <div class="Gallery_Album" lang="zh-CN">谭某某</div>
                     </td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Music" src="./image/assets/J/covers/欧若拉.jpg"></td>
-                    <td><span class="Gallery_Title">欧若拉</span> / <span class="Gallery_Artist" lang="zh-CN">张韶涵</span>
-                        <br><span class="Gallery_Album">欧若拉</span>
+                    <td>
+                        <span class="Gallery_Title" lang="zh-CN">欧若拉</span>
+                        <span class="Gallery_Artist" lang="zh-CN">张韶涵</span>
+                        <div class="Gallery_Album" lang="zh-CN">欧若拉</div>
                     </td>
                 </tr>
 
@@ -298,63 +340,70 @@
             <table class="Gallery_Table">
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/涼宮ハルヒの憂鬱.jpg"></td>
-                    <td><span class="Gallery_Title">涼宮ハルヒの憂鬱</span>
-                        <br><span class="Gallery_Subtitle">Suzumiya Haruhi no Yūutsu</span>
-                        <br><span class="Gallery_Subtitle">凉宫春日的忧郁</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">涼宮ハルヒの憂鬱</div>
+                        <div class="Gallery_Subtitle">Suzumiya Haruhi no Yūutsu</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">凉宫春日的忧郁</div>
                     </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/四月は君の嘘.jpg"></td>
-                    <td><span class="Gallery_Title">四月は君の嘘</span>
-                        <br><span class="Gallery_Subtitle">Shigatsu wa Kimi no Uso</span>
-                        <br><span class="Gallery_Subtitle">四月是你的谎言</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">四月は君の嘘</div>
+                        <div class="Gallery_Subtitle">Shigatsu wa Kimi no Uso</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">四月是你的谎言</div>
                     </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/夏目友人帳.jpg"></td>
-                    <td><span class="Gallery_Title">夏目友人帳</span>
-                        <br><span class="Gallery_Subtitle">Natsume Yūjinchō</span>
-                        <br><span class="Gallery_Subtitle">夏目友人帐</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">夏目友人帳</div>
+                        <div class="Gallery_Subtitle">Natsume Yūjinchō</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">夏目友人帐</div>
                     </td>
                     <td>2015</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/氷菓.jpg"></td>
-                    <td><span class="Gallery_Title">氷菓</span>
-                        <br><span class="Gallery_Subtitle">Hyōka</span>
-                        <br><span class="Gallery_Subtitle">冰果</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">氷菓</div>
+                        <div class="Gallery_Subtitle">Hyōka</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">冰果</div>
                     </td>
                     <td>2016</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/花咲くいろは.jpg"></td>
-                    <td><span class="Gallery_Title">花咲くいろは</span>
-                        <br><span class="Gallery_Subtitle">Hanasaku Iroha</span>
-                        <br><span class="Gallery_Subtitle">花开伊吕波</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">花咲くいろは</div>
+                        <div class="Gallery_Subtitle">Hanasaku Iroha</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">花开伊吕波</div>
                     </td>
                     <td>2016</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/ノラガミ.jpg"></td>
-                    <td><span class="Gallery_Title">ノラガミ</span>
-                        <br><span class="Gallery_Subtitle">Noragami</span>
-                        <br><span class="Gallery_Subtitle">野良神</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">ノラガミ</div>
+                        <div class="Gallery_Subtitle">Noragami</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">野良神</div>
                     </td>
                     <td>2016</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/小林さんちのメイドラゴン.jpg"></td>
-                    <td><span class="Gallery_Title">小林さんちのメイドラゴン</span>
-                        <br><span class="Gallery_Subtitle">Kobayashi Sanchi no Maidragon</span>
-                        <br><span class="Gallery_Subtitle">小林家的龙女仆</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">小林さんちのメイドラゴン</div>
+                        <div class="Gallery_Subtitle">Kobayashi Sanchi no Maidragon</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">小林家的龙女仆</div>
                     </td>
                     <td>2017</td>
                 </tr>
@@ -362,18 +411,20 @@
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/少女終末旅行.jpg"></td>
-                    <td><span class="Gallery_Title">少女終末旅行</span>
-                        <br><span class="Gallery_Subtitle">Shōjō Shūmatsu Ryōkō</span>
-                        <br><span class="Gallery_Subtitle">少女终末旅行</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">少女終末旅行</div>
+                        <div class="Gallery_Subtitle">Shōjō Shūmatsu Ryōkō</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">少女终末旅行</div>
                     </td>
                     <td>2017</td>
                 </tr>
 
                 <tr>
                     <td><img class="Gallary_Cover Gallary_Cover_Anime" src="./image/assets/J/covers/日常.jpg"></td>
-                    <td><span class="Gallery_Title">日常</span>
-                        <br><span class="Gallery_Subtitle">Nichijō</span>
-                        <br><span class="Gallery_Subtitle">日常</span>
+                    <td>
+                        <div class="Gallery_Title" lang="ja">日常</div>
+                        <div class="Gallery_Subtitle">Nichijō</div>
+                        <div class="Gallery_Subtitle" lang="zh-CN">日常</div>
                     </td>
                     <td>2019</td>
                 </tr>
@@ -382,7 +433,139 @@
     </div>
 
     <div>
-        <div class="Gallery_Block_Header">博 客<div style="font-size: 10px; color: #bbbbbb; padding-top: 5px;">以下链接没有顺序</div></div>
+        <div class="Gallery_Block_Header">图 书</div>
+        <div class="AboutContent">
+            下列所有图书均有纸质或电子版藏书，如有需要，可联系博主试读。推荐购买正版图书。
+        </div>
+        <div class="Gallery_Block_Container">
+            <table class="Gallery_Table Gallery_Table_Book">
+                <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20200313001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">实用电子元器件与电路基础</div>
+                        <div class="Gallery_Subtitle"></div>
+                        <div class="Gallery_Author">[美] Paul Scherz</div>
+                        <div class="Gallery_Press">电子工业出版社</div>
+                        <div class="Gallery_EurekaID">20200313001</div>
+                        <div class="Gallery_Category">Q</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20160421001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">哥德尔、艾舍尔、巴赫</div>
+                        <div class="Gallery_Subtitle">集异璧之大成</div>
+                        <div class="Gallery_Author">[美] 侯世达</div>
+                        <div class="Gallery_Press">商务印书馆</div>
+                        <div class="Gallery_EurekaID">20160421001</div>
+                        <div class="Gallery_Category">N</div>
+                    </td>
+                </tr>
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20190910002.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">经济学原理</div>
+                        <div class="Gallery_Subtitle">宏微观共两册（第五版）</div>
+                        <div class="Gallery_Author">[美] 曼昆</div>
+                        <div class="Gallery_Press">北京大学出版社</div>
+                        <div class="Gallery_EurekaID">20190910002</div>
+                        <div class="Gallery_Category">F</div>
+                    </td>
+                </tr> -->
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20181206001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">简明中国历史地图集</div>
+                        <div class="Gallery_Subtitle"></div>
+                        <div class="Gallery_Author">谭其骧</div>
+                        <div class="Gallery_Press">中国地图出版社</div>
+                        <div class="Gallery_EurekaID">20181206001</div>
+                        <div class="Gallery_Category">H</div>
+                    </td>
+                </tr> -->
+
+                <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20181121001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">世界著名歌曲45首</div>
+                        <div class="Gallery_Subtitle"></div>
+                        <div class="Gallery_Author">本书编写组</div>
+                        <div class="Gallery_Press">高等教育出版社</div>
+                        <div class="Gallery_EurekaID">20181121001</div>
+                        <div class="Gallery_Category">J</div>
+                    </td>
+                </tr>
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20170809001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">编码</div>
+                        <div class="Gallery_Subtitle">隐匿在计算机软硬件背后的语言</div>
+                        <div class="Gallery_Author">[美] Charles Petzold</div>
+                        <div class="Gallery_Press">电子工业出版社</div>
+                        <div class="Gallery_EurekaID">20170809001</div>
+                        <div class="Gallery_Category">C</div>
+                    </td>
+                </tr> -->
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20170823001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">The Little Schemer</div>
+                        <div class="Gallery_Subtitle">递归与函数式的奥妙</div>
+                        <div class="Gallery_Author">[美] D P Friedman 等</div>
+                        <div class="Gallery_Press">电子工业出版社</div>
+                        <div class="Gallery_EurekaID">20170823001</div>
+                        <div class="Gallery_Category">C</div>
+                    </td>
+                </tr> -->
+
+                <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20160724001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">计算的本质</div>
+                        <div class="Gallery_Subtitle">深入剖析程序和计算机</div>
+                        <div class="Gallery_Author">[英] Tom Stuart</div>
+                        <div class="Gallery_Press">人民邮电出版社</div>
+                        <div class="Gallery_EurekaID">20160724001</div>
+                        <div class="Gallery_Category">C</div>
+                    </td>
+                </tr>
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20150305001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">生命是什么</div>
+                        <div class="Gallery_Subtitle">活细胞的物理观</div>
+                        <div class="Gallery_Author">[奥] 埃尔温·薛定谔</div>
+                        <div class="Gallery_Press">商务印书馆</div>
+                        <div class="Gallery_EurekaID">20150305001</div>
+                        <div class="Gallery_Category">R</div>
+                    </td>
+                </tr> -->
+
+                <!-- <tr>
+                    <td><img class="Gallary_Cover Gallary_Cover_Book" src="./image/assets/N/book-cover/20150919001.jpg"></td>
+                    <td>
+                        <div class="Gallery_Title">计算机程序的构造和解释</div>
+                        <div class="Gallery_Subtitle"></div>
+                        <div class="Gallery_Author">[美] Harold Abelson 等</div>
+                        <div class="Gallery_Press">机械工业出版社</div>
+                        <div class="Gallery_EurekaID">20150919001</div>
+                        <div class="Gallery_Category">C</div>
+                    </td>
+                </tr> -->
+
+
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <div class="Gallery_Block_Header">博 客<div class="Gallery_Block_Header_Subtitle">以下链接没有顺序</div></div>
         <div class="Gallery_Block_Container">
             <table class="Gallery_Table">
                 <tr>
@@ -716,7 +899,7 @@
 
 <!--Header模板-->
 
-<template id="index-title">        <div class="HeaderTitleCenter"><b>Project Aurora</b><div class="HeaderSubtitleCenter">- 仁者心动 -</div></div> </template>
+<template id="index-title">        <div class="HeaderTitleCenter"><b>Project Aurora</b><div class="HeaderSubtitleCenter">- 言わざる -</div></div> </template>
 <template id="inspirations-title"> <div class="HeaderTitleLeft">灵感</div> </template>
 <template id="blog-title">         <div class="HeaderTitleLeft">博客</div> </template>
 <template id="gallery-title">      <div class="HeaderTitleLeft">分享</div> </template>
