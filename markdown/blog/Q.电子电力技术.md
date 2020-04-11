@@ -12,6 +12,7 @@
 - [#(数字微镜器件)#](https://en.wikipedia.org/wiki/Digital_micromirror_device)
 - #(AT命令集)#（#(海斯命令集)#）
 - [#(安提基特拉机械)#](https://zh.wikipedia.org/wiki/%E5%AE%89%E6%8F%90%E5%9F%BA%E7%89%B9%E6%8B%89%E6%9C%BA%E6%A2%B0)
+- #(标幺值)#：电气工程术语，英文 per unit，简称p.u.，意思是物理量的相对值，即有名值和基准值的比值。 ​​​​
 
 # 专题
 
