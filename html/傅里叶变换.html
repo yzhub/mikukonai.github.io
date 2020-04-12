@@ -1,33 +1,16 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Frame Iroha - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+<script src="../script/framework/jquery/jquery.easing.js"></script>
 
-#!title:    快速傅里叶变换
-#!date:     2018-05-27
-#!authors:  Mikukonai
-#!cover:    
-#!type:     原创
-#!tags:     数学,信号与系统,数字信号处理
-
-#!content
-
-> 本文待完善。
-
-<canvas id="time" style="width:330px; height:100px;" width="330" height="100"></canvas>
-
-
-: <button id="square" class="MikumarkButton">方波</button> <button id="sine" class="MikumarkButton">正弦波</button>
-
-: <button id="sweep" class="MikumarkButton">δ(t) 扫频（IDFT）</button> <button id="gnoise" class="MikumarkButton">低通降噪</button>
-
-: <button id="filter" class="MikumarkButton">方波加变宽矩形窗</button>
-
-<canvas id="freq" style="width:330px; height:200px;" width="330" height="200"></canvas>
-
-离散傅里叶变换（DFT）
-
-$$ X(k) = \sum_{n=0}^{N-1}{x(n) \cdot \text{e}^{- \frac{2 \pi \text{i}kn}{N}}}$$
-
-2018-09-12 完成
-
-#!style
+<!--页面自定义样式开始-->
+<style>
 
 canvas {
     display: block;
@@ -35,11 +18,31 @@ canvas {
     margin: 10px auto 10px auto;
 }
 
-#!script
+</style>
+<!--页面自定义样式结束-->
 
-#!script:./script/signal.js
-#!script:./script/canvas.js
+</head>
+<body>
 
+<!--页面内容开始-->
+
+<canvas id="time" style="width:330px; height:100px;" width="330" height="100"></canvas>
+
+<div style="text-align: center;">
+    <button id="square" class="MikumarkButton">方波</button>
+    <button id="sine" class="MikumarkButton">正弦波</button>
+    <button id="sweep" class="MikumarkButton">扫频</button>
+    <button id="filter" class="MikumarkButton">方波加变宽矩形窗</button>
+</div>
+
+<canvas id="freq" style="width:330px; height:200px;" width="330" height="200"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/signal.js"></script>
+<script src="../script/canvas.js"></script>
+<script>
 
 // 将实数序列转换为复数序列
 Array.prototype.toComplexList = function() {
@@ -344,31 +347,15 @@ $(function() {
         plot(xs, reverse(outRep,SIZE), freqCanvas);
     });
 
-    $('#gnoise').click(function() {
-        clearInterval(timer);
-        timer = setInterval(function() {
-            // 输入方波
-            let input = Wave.gauss(SIZE);
-            // 矩形窗滤波器
-            let filter = Wave.square(0.1, SIZE);
-            // 输入信号的频谱
-            let inputSpect = RealFFT(input, SIZE);
-            // 频域相乘
-            let res = new Array();
-            for(let i = 0; i < SIZE; i++) {
-                res[i] = inputSpect[i] * filter[i];
-            }
-            // 结果反变换为时域
-            let outRep = RealIFFT(res, SIZE);
-            clear(freqCanvas);
-            clear(timeCanvas);
-            plot(x0, input, timeCanvas);
-            plot(xs, outRep, freqCanvas);
-
-        }, 50);
-    });
 });
 
 $('#clear').click(function() {
     clear();
 });
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

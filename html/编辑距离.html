@@ -1,32 +1,16 @@
-#!title:    编辑距离
-#!date:     2018-08-15
-#!authors:  Mikukonai
-#!cover:    
-#!type:     C
-#!tags:     
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Frame Iroha - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+<script src="../script/framework/jquery/jquery.easing.js"></script>
 
-#!content
-
-# 演示
-
-> <button id="auto" class="MikumarkButton">自动</button> <button id="step" class="MikumarkButton">步进</button> <br>
-
-> <input id="input1" value="sitting">
-<input id="input2" value="kitten">
-
-> <div class="edit_distance_line" id="line2"></div><div class="edit_distance_line" id="line1"></div>
-
-> <div id="matrix"></div>
-
-# 原理
-
-[维基百科](https://en.wikipedia.org/wiki/Levenshtein_distance)
-
-递推公式：
-
-![式子中$1_{(a_i \neq b_j)}$意思是：若不等则为1，反之为0。](https://wikimedia.org/api/rest_v1/media/math/render/svg/4520f5376b54613a5b0e6c6db46083989f901821)
-
-#!style
+<!--页面自定义样式开始-->
+<style>
 
 .edit_distance_charblock {
     display: inline-block;
@@ -64,10 +48,29 @@
     font-weight: bold;
 }
 
-#!script
+</style>
+<!--页面自定义样式结束-->
 
-#!script:./script/levenshtein.js
+</head>
+<body>
 
+<!--页面内容开始-->
+
+<button id="auto" class="MikumarkButton">自动</button> <button id="step" class="MikumarkButton">步进</button> <br>
+
+<input id="input1" value="sitting">
+<input id="input2" value="kitten">
+
+<div class="edit_distance_line" id="line2"></div><div class="edit_distance_line" id="line1"></div>
+
+<div id="matrix"></div>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/levenshtein.js"></script>
+<script>
 let editDistance = null;
 let initFlag = false;
 document.getElementById('auto').addEventListener('click', ()=> {
@@ -88,3 +91,8 @@ document.getElementById('step').addEventListener('click', ()=> {
     }
     editDistance.step();
 });
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
