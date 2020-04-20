@@ -49,15 +49,12 @@ function GD(pt, cv) {
         let B = -b / w2;
         let w = - w1 / w2;
         cv.context.textBaseline = 'top';
-        cv.context.font = '12px Arial';
-        cv.context.fillStyle = 'rgb(0,0,0)';
-
-        cv.Text('自适应学习率因子=' + saf.toFixed(3).toString(), [8, cv.Ymax-(8+14*0)]);
-        cv.Text('斜率=' + w.toFixed(3).toString(), [8, cv.Ymax-(8+14*1)]);
-        cv.Text('截距=' + B.toFixed(3).toString(), [8, cv.Ymax-(8+14*2)]);
-        cv.Text('wx=' + w1.toFixed(3).toString(), [8, cv.Ymax-(8+14*3)]);
-        cv.Text('wy=' + w2.toFixed(3).toString(), [8, cv.Ymax-(8+14*4)]);
-        cv.Text('bias=' + b.toFixed(3).toString(), [8, cv.Ymax-(8+14*5)]);
+        cv.Text('自适应学习率因子=' + saf.toFixed(3).toString(), [8, cv.Ymax-(8+14*0)], "#000", "12px consolas");
+        cv.Text('斜率=' + w.toFixed(3).toString(), [8, cv.Ymax-(8+14*1)], "#000", "12px consolas");
+        cv.Text('截距=' + B.toFixed(3).toString(), [8, cv.Ymax-(8+14*2)], "#000", "12px consolas");
+        cv.Text('wx=' + w1.toFixed(3).toString(), [8, cv.Ymax-(8+14*3)], "#000", "12px consolas");
+        cv.Text('wy=' + w2.toFixed(3).toString(), [8, cv.Ymax-(8+14*4)], "#000", "12px consolas");
+        cv.Text('bias=' + b.toFixed(3).toString(), [8, cv.Ymax-(8+14*5)], "#000", "12px consolas");
 
         let color = '#666666';
         cv.context.lineWidth = 2;

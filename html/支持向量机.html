@@ -216,11 +216,9 @@ function show(svm, cv) {
         cv.Line([xs[0],(ys[0]+1.0/svm.w[1])], [xs[1], (ys[1]+1.0/svm.w[1])], 'rgba(0,0,0,0.5)');
 
         cv.context.textBaseline = 'top';
-        cv.context.font = '14px Consolas';
-        cv.context.fillStyle = 'rgb(0,0,0)';
-        cv.Text('   wx=' + w1.toFixed(3).toString(), [8, cv.Ymax-(8+14*0)]);
-        cv.Text('   wy=' + w2.toFixed(3).toString(), [8, cv.Ymax-(8+14*1)]);
-        cv.Text(' bias=' + b.toFixed(3).toString(), [8, cv.Ymax-(8+14*2)]);
+        cv.Text('   wx=' + w1.toFixed(3).toString(), [8, cv.Ymax-(8+14*0)], "#000", "14px Consolas");
+        cv.Text('   wy=' + w2.toFixed(3).toString(), [8, cv.Ymax-(8+14*1)], "#000", "14px Consolas");
+        cv.Text(' bias=' + b.toFixed(3).toString(), [8, cv.Ymax-(8+14*2)], "#000", "14px Consolas");
 
         // draw margin lines for support vectors. The sum of the lengths of these
         // lines, scaled by C is essentially the total hinge loss.

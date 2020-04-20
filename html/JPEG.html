@@ -98,14 +98,12 @@ $(function() {
         timer = setInterval(()=>{
             loadImage(path, ()=>{
                 let size = Compress(cv, quality[index]);
-                cv.context.font = "14px consolas";
-                cv.context.fillStyle = "#fff";
                 cv.context.shadowColor = 'rgba(0, 0, 0, 0.9)';
                 cv.context.shadowOffsetX = 1;
                 cv.context.shadowOffsetY = 1;
                 cv.context.shadowBlur = 1;
-                cv.Text(`质量因子 = ${quality[index]}`, [10, 10]);
-                cv.Text(`压缩率 = ${(size.compressedSize / size.originSize).toFixed(3)}`, [10, 30]);
+                cv.Text(`质量因子 = ${quality[index]}`, [10, 10], "#fff", "14px consolas");
+                cv.Text(`压缩率 = ${(size.compressedSize / size.originSize).toFixed(3)}`, [10, 30], "#fff", "14px consolas");
             });
             index++;
             if(index >= quality.length) index = 0;

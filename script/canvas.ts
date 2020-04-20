@@ -41,6 +41,16 @@ Canvas.prototype = {
         return this.Ymax - (y * this.RATIO * this.Yrange) / this.canvas.height;
     },
 
+    // 重新设定画布的坐标（典型场景为根据幅度值自适应的坐标轴范围）
+    Resize: function(bottomLeft, topRight) {
+        this.Xmin = bottomLeft[0];
+        this.Xmax = topRight[0];
+        this.Xrange = this.Xmax - this.Xmin;
+        this.Ymin = bottomLeft[1];
+        this.Ymax = topRight[1];
+        this.Yrange = this.Ymax - this.Ymin;
+    },
+
     Clear: function() {
         this.canvas.height = this.canvas.height;
     },
@@ -75,7 +85,10 @@ Canvas.prototype = {
         this.context.stroke();
     },
 
-    Text: function(text, position) {
+    Text: function(text, position, fillStyle, font, textAlign) {
+        this.context.fillStyle = fillStyle || "#000";
+        this.context.font = font || "14px serif";
+        this.context.textAlign = textAlign || "left";
         this.context.fillText(text.toString(), this.toCanvasX(position[0]), this.toCanvasY(position[1]));
     },
 

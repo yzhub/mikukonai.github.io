@@ -71,9 +71,7 @@ function plot(list, text, cv) {
     const RANGE = 1;
 
     cv.context.textBaseline = 'top';
-    cv.context.font = '14px Consolas';
-    cv.context.fillStyle = 'rgba(0,0,0,0.7)';
-    cv.Text(text, [8, cv.Ymax-8]);
+    cv.Text(text, [8, cv.Ymax-8], "rgba(0,0,0,0.7)", "14px Consolas");
 
     // axis
     cv.Line([0,0],[0,cv.Ymax],'rgba(0, 0, 0, 0.15)');
@@ -81,19 +79,18 @@ function plot(list, text, cv) {
     cv.Line([0,0],[0,cv.Ymax],'rgba(0, 0, 0, 0.15)');
 
     // horizontal lines
-    cv.context.fillStyle = 'rgba(0,0,0,0.15)';
     cv.context.textBaseline = 'bottom';
 
-    cv.Text('0', [1, 0]);
+    cv.Text('0', [1, 0], "rgba(0,0,0,0.15)");
 
     cv.Line([0, cv.Ymax/4],[cv.Xmax, cv.Ymax/4],'rgba(0,0,0,0.15)')
-    cv.Text('0.25', [1, cv.Ymax/4]);
+    cv.Text('0.25', [1, cv.Ymax/4], "rgba(0,0,0,0.15)");
 
     cv.Line([0, cv.Ymax/2],[cv.Xmax, cv.Ymax/2],'rgba(0,0,0,0.15)')
-    cv.Text('0.50', [1, cv.Ymax/2]);
+    cv.Text('0.50', [1, cv.Ymax/2], "rgba(0,0,0,0.15)");
 
     cv.Line([0, cv.Ymax*3/4],[cv.Xmax, cv.Ymax*3/4],'rgba(0,0,0,0.15)')
-    cv.Text('0.75', [1, cv.Ymax*3/4]);
+    cv.Text('0.75', [1, cv.Ymax*3/4], "rgba(0,0,0,0.15)");
 
     // calculate x
     let xMax = list.length;
@@ -115,9 +112,7 @@ function plot(list, text, cv) {
 }
 
 function prompt(cv) {
-    cv.context.font = '14px Consolas';
-    cv.context.fillStyle = 'rgba(0,0,0,1)';
-    cv.Text('Logistic Mapping', [cv.Xmax/3, cv.Ymax/2]);
+    cv.Text('Logistic Mapping', [cv.Xmax/3, cv.Ymax/2], "rgba(0,0,0,1)", "14px Consolas");
 }
 
 $(function() {

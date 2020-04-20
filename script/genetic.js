@@ -265,7 +265,7 @@ function drawMap(cv, path) {
     cv.Clear();
     for(let i = 0; i < MAP.length; i++) {
         cv.Circle(MAP[i], 0.2, "ff0000");
-        cv.Text(CITY[i], MAP[i]);
+        cv.Text(CITY[i], MAP[i], "#000", "10px consolas");
     }
     let p1 = MAP[path[0]];
     for(let i = 1; i < path.length; i++) {
@@ -284,7 +284,7 @@ function drawStat(cv, history) {
         cv.Line(p1, p2, "#0000ff");
         p1 = p2;
     }
-    cv.Text(history[history.length-1].toFixed(3).toString(), [10,140]);
+    cv.Text(history[history.length-1].toFixed(3).toString(), [10,140], "#000", "14px consolas");
 }
 
 

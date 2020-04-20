@@ -2,10 +2,10 @@
 #!date:     2019-11-03
 #!authors:  Mikukonai
 #!cover:    
-#!type:     C
+#!type:     M
 #!tags:     
 
-#!{ImagePath}:./image/assets/C/mp3
+#!{ImagePath}:./image/assets/M/mp3
 
 #!content
 
@@ -77,8 +77,6 @@ frameLength = (bitRate * 1152) / sampleRate + (paddingSlot * 8)
 
 至于子带滤波器，它的信号流图以及算法参数都在11172标准中有定义，直接照抄就可以。
 
-![信号流图](http://wx3.sinaimg.cn/large/450be1f5gy1g8m3hdg4tgj23342bcjzo.jpg)
-
 ## 心理声学模型如何控制码率分配（20191105）
 
 + 量化会引入量化噪声，包括同时噪声，也包括前回声（尤其是长窗口MDCT情况下）。
@@ -100,109 +98,28 @@ MP3编码标准所使用的技术，包括子带滤波、心理声学模型、�
 
 全称 MPEG-1 Layer Ⅲ，对应国际标准为 ISO/IEC 11172-3。
 
-![MP3编码器框图[2.0]]({ImagePath}/mp3-encoder-diagram.png)
+![MP3编码器框图]({ImagePath}/mp3-encoder-diagram.png)
+
+![MP3量化循环]({ImagePath}/mp3-qloop.png)
 
 # 心理声学模型
 
-以下暂且翻译11172标准的附录D。
+![等响度曲线 \[C2\]](./image/assets/M/equal-loudness-curves.png)
 
-## 1.第一心理声学模型
+![频域（同时）掩蔽，以及NMR、SNR、SMR之间的关系示意 \[A3\]\(由\[B1\]重制\)]({ImagePath}/mp3-simultaneous-masking.png)
 
-心理声学模型的计算，应当根据标准层的不同而作调整。下面的例子适用于第一层和第二层，也可以用于第三层（MP3）。
-
-第一层和第二层使用的第一心理声学模型并无原理上的不同。
-
-- 第一层：每个数据块（12个子带，即384个PCM输入采样）计算一次比特分配。
-- 第二层：每三个数据块（36个子带，即1152个PCM输入采样）计算一次比特分配。
-
-为了计算全部32个子带的比特分配，必须先计算出每个子带的信掩比（SMR）。因此，有必要确定每个子带的最大声压级和最小的掩蔽门限。其中，最小掩蔽门限是将输入的PCM信号作FFT之后，根据心理声学模型计算得到的。
-
-FFT与子带滤波并行进行，可补偿子带滤波器组在低频频段上缺乏频谱选择性的问题。这一手段既可以提供足够的时间分辨率（多相滤波器的窗口经过优化，可使前回声现象最小化），也为掩蔽门限的计算提供了足够的频谱分辨率。
-
-在编解码过程中，可以计算出混叠失真的频率和幅度。解码过程中，对于那些需要一些比特以消除混叠成分的子带来说，计算出混叠失真的频率或者幅度，以计算出最小比特率，是非常必要的。只有在编码器中才需要引入更多的计算复杂度，以提升频率分辨率，而在解码器中则并不需要。
-
-可采取以下步骤，计算信掩比：
-
-+ 计算FFT，将时域信号变换到频域。
-+ 计算每个子带的声压级。
-+ 计算绝对听阈。
-+ 找出单音性和非单音性（噪音性）的音频信号成分。
-+ 抽取最相关的掩蔽信号（masker）。
-+ 计算每个掩蔽信号的掩蔽门限。
-+ 计算全局掩蔽门限。
-+ 计算每个子带的最小掩蔽门限。
-+ 计算每个子带的SMR。
-
-下文将以48kHz采样率为例，详细介绍以上过程。对于其余两个采样率，需要相应调整下文涉及到的频率数值。
-
-### 第一步：快速傅里叶变换
-
-掩蔽门限是由信号功率密度谱的估计值计算得来。其中，功率密度谱由输入PCM信号的512点（第一层）或1024点（第二层、第三层）FFT计算得到。在计算FFT之前，需要对输入信号加汉宁（Hann）窗。
-
-为了使比特分配和相应的子带采样在时间上保持一致，PCM采样数据进入FFT之前必须先作延时处理：
-
-+ 分析子带滤波器的延迟是256个采样点，在48kHz采样率下相当于5.3ms。这相当于256个样本的窗口移位。
-+ 汉宁窗窗口必须与数据帧的子带采样对齐。对于第一层是移动窗口+64个采样，而对于第二层是移动窗口-64个采样。
-
-FFT的相关参数：
-
-|    |第一层|第二层|
-|----------------|
-|点数|512|1024|
-|相应的窗宽(44.1kHz)|11.6ms|23.2ms|
-|频率分辨率|采样率/512|采样率/1024|
-
-汉宁窗：
-
-$$ h(i) = 0.5 * (1 - \cos(2 \pi \frac {i}{N-1} ) ) \quad , \quad 0 \le i \lt N $$
-
-功率密度谱：（公式有问题，暂且放过）
-
-需要对参考声压级作标准化，以使最大声压级等于96dB。
-
-### 第二步：计算声压级
-
-使用下式计算子带n的声压级$L_{sb}(n)$：
-
-$$ L_{sb}(n) = \mathrm{max}(X(k), 20 \log (scfmax(n) \cdot 32768 ) - 10 ) \mathrm{dB}$$
-
-X(k) in 子带n
-
-式中，X(k)是子带n范围内幅度最大的那条谱线的声压级。scfmax(n)指的是第一层的尺度因子（scalefactor），或者第二层的一帧中子带n的三个尺度因子中的最大值。“-10dB”项用于校正峰值电平和RMS电平之间的差异。对每个子带，都会计算出一个声压级$L_{sb}(n)$。
-
-## 2.第二心理声学模型
-
-第二心理声学模型是一个独立的心理声学模型，可以对其进行调整并适用于ISO-MPEG音频编码的每一层。本附录介绍一般的第二心理声学模型，并为实现用于第一层和第二层编码的声学模型提供了足够的信息。第三层编码的第二心理声学模型也基于此实现，但是会有一些调整，具体内容在附录C中描述。
-
-第二心理声学模型的阈值计算过程有3个输入，它们是：
-
-1、位移长度iblen，介于(384,640)之间。在每一个具体的计算过程中，iblen的值必须保持不变。如果需要以两个不同的位移长度执行两个阈值计算（如第三层），则每个计算过程都需要指定一个固定不变的位移长度。
-
-
-
-
-
-
-舍弃人耳无法感知的冗余信息：声压级（SPF），听阈（静音门限）和痛阈，时域掩蔽和频域掩蔽，关键频带（critical bands），第二心理声学模型，信掩比（SMR）
-
-![安静环境下的绝对听阈[4.0]]({ImagePath}/mp3-absolute-threshold-of-hearing.png)
-
-![理想化的关键频带划分示意图[4.0]]({ImagePath}/mp3-critical-bands.png)
-
-![频域（同时）掩蔽，以及NMR、SNR、SMR之间的关系示意[1.2(由[2.0重制])]]({ImagePath}/mp3-simultaneous-masking.png)
-
-![时域掩蔽[1.2(由[2.0重制])]]({ImagePath}/mp3-temporal-masking.png)
+![时域掩蔽 \[A3\]\(由\[B1\]重制\)]({ImagePath}/mp3-temporal-masking.png)
 
 
 # 滤波与变换编码
 
 子带滤波器组，改进的离散余弦变换（MDCT），长窗口和短窗口，前回声抑制
 
-![分析子带滤波器组的频率特性[2.0]]({ImagePath}/mp3-filterbank.png)
+![分析子带滤波器组的频率特性 [B1]]({ImagePath}/mp3-filterbank.png)
 
-![MDCT使用的四种窗口[2.0]]({ImagePath}/mp3-MDCT-windows.png)
+![MDCT使用的四种窗口 [B1]]({ImagePath}/mp3-MDCT-windows.png)
 
-![混叠消除的蝴蝶结运算[1.0]]({ImagePath}/mp3-aliasing-butterfly.png)
+![混叠消除的蝴蝶结运算 [A1]]({ImagePath}/mp3-aliasing-butterfly.png)
 
 # 量化与熵编码
 
@@ -218,7 +135,7 @@ ID3v2等
 
 # 现有的编解码器产品
 
-LAME
+LAME / dist10 / mpg123
 
 # 附录
 
@@ -268,26 +185,17 @@ scfsi放在最后实现，可以直接抄dist10。重在理解原理。
 
 标准文档及其相关解读，标准文档当然是最高依据：
 
-- [1.0] **ISO/IEC 11172** - Coding Of Moving Picture And Associated Audio For Digital Storage Media At Up To About 1,5 Mbit/s - Part 3: Audio
-- [1.1] Pan D . **Tutorial on MPEG/audio compression**[J]. IEEE Multimedia, 1995, 2(2):60-74.
-- \[1.2] Noll, P. [**MPEG digital audio coding**](https://www.csd.uoc.gr/~hy438/lectures/MPEGAudioCoding.pdf)[J]. IEEE Signal Process Mag, 1997, 14(5):59-81.
+- A1 / **ISO/IEC 11172** - Coding Of Moving Picture And Associated Audio For Digital Storage Media At Up To About 1.5 Mbit/s - Part 3: Audio
+- A2 / Pan D . **Tutorial on MPEG/audio compression**[J]. IEEE Multimedia, 1995, 2(2):60-74.
+- A3 / Noll, P. [**MPEG digital audio coding**](https://www.csd.uoc.gr/~hy438/lectures/MPEGAudioCoding.pdf)[J]. IEEE Signal Process Mag, 1997, 14(5):59-81.
+- A4 / Raissi R. **The theory behind MP3**[J]. MP3’Tech, 2002.
 
 较好的中文论文，原理与实现并重，可供快速入门：
 
-- [2.0] 張芷燕. **MP3編碼法之研究與實現**[D]. 国立交通大学（台湾省）, 2002.
-- \[2.1] 丰帆. [**MP3数字音频编解码算法的研究及实现**](http://www.doc88.com/p-1854633481570.html)[D]. 西安电子科技大学, 2008.
-- [2.2] 王建昕, 董在望. **MPEG音频编码算法的研究与实时实现**[J]. 清华大学学报(自然科学版), 1997(10):45-48.
+- B1 / 張芷燕. **MP3編碼法之研究與實現**[D]. 国立交通大学（台湾省）, 2002.
 
-适合入门的科普向文章：
+有关心理声学和感知编码的文章，可供参考：
 
-- [3.0] Rassol Raissi. **The Theory Behind Mp3**
+- C1 / Painter T, Spanias A. **Perceptual coding of digital audio**[J]. Proceedings of the IEEE, 2000, 88(4): 451-515.
+- C2 / Robinson D J M. **The human auditory system**[C]//107th convention of the Audio Engineering Society. 1999: 1-13.
 
-有关感知音频编码基本原理的文章，可供参考：
-
-- [4.0] Painter T , Spanias A . **Perceptual coding of digital audio**[J]. Proceedings of the IEEE, 2000, 88(4):451-515.
-
-有关人类听觉系统的文章，或许有用：
-
-- [5.0] D Robinson. **The Human Auditory System**
-
-随着研究的继续，本列表会不断更新。
