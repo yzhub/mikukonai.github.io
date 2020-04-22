@@ -140,11 +140,101 @@
 
 <!--文章列表模板-->
 <template id="blog">
+
+<style>
+.TimelineContainer { margin: 25px 0; text-align: center; overflow: auto; }
+.Timeline { margin: 0 auto; border-collapse: collapse; border-spacing: 0px; }
+.Timeline td { padding: 0; }
+.Day { box-sizing: border-box; margin: 2px 1px; width: 12px; height: 12px; background-color: #eee; }
+
+.Blank, .Blank:hover { background-color: transparent; }
+.Firstday { background-color: #ddd; }
+
+.L1 { background-color: #c6e48b; }
+.L2 { background-color: #7bc96f; }
+.L3 { background-color: #239a3b; }
+.L4 { background-color: #196127; }
+
+.Weektag { margin: 2px 3px; height: 12px; font-size: 10px; text-align: right; color: #ccc; transform: scale(0.8); }
+.WeekCount { margin: 2px; width: 12px; line-height: 12px; font-size: 10px; text-align: center; color: #ddd; transform: scale(0.7); }
+
+</style>
+
+    <div class="TimelineContainer">
+        <table class="Timeline">
+            <tr id="WeekCountContainer"></tr>
+            <tr id="DaysContainer"></tr>
+        </table>
+    </div>
     <div class="ListSortingOptionContainer">
         <span class="ListSortingOption ListSortingOptionLeft" data-sorting-option="date-dec">日期降序</span><span class="ListSortingOption ListSortingOptionRight" data-sorting-option="category">分类归类</span>
     </div>
     <div id="ListContainer"></div>
     <div class="ListEnding">封面出处：《凉宫春日的忧郁》</div>
+<script>
+$("#WeekCountContainer").append(`<td class="WeekCount"></td>`);
+$("#DaysContainer").append(`<td>
+    <div class="Weektag">月</div>
+    <div class="Weektag">火</div>
+    <div class="Weektag">水</div>
+    <div class="Weektag">木</div>
+    <div class="Weektag">金</div>
+    <div class="Weektag">土</div>
+    <div class="Weektag">日</div>
+</td>`);
+
+let weekDayCount = 0;
+let weekCount = 0;
+let newYearDayWeek = 3; // 当年元旦是星期几
+let date = new Date();
+const MONTH_DAYS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let isLeapYear = false;
+let fullyear = date.getFullYear();
+if(fullyear % 100 === 0) {
+    if(fullyear % 400 === 0) isLeapYear = true;
+    else isLeapYear = false;
+}
+else {
+    if(fullyear % 4 === 0) isLeapYear = true;
+    else isLeapYear = false;
+}
+let weekRowStr = `<td>`;
+
+// 处理1月1日之前的空格（TODO 每年第一周的处理逻辑应对标ISO8601）
+newYearDayWeek--;
+while(newYearDayWeek > 0) {
+    weekRowStr += `<div class="Day Blank"></div>`;
+    weekDayCount++;
+    newYearDayWeek--;
+}
+
+for(let month = 1; month <= date.getMonth()+1; month++) { // 注意getMonth()返回的月份数字从0开始
+    monthDays = MONTH_DAYS[month];
+    if(month === 2 && isLeapYear === true) monthDays++;
+    for(let day = 1; day <= monthDays; day++) {
+        let firstDay = (day === 1) ? " Firstday" : "";
+        let dateString = `${date.getFullYear()}-${month}-${day}`;
+
+        let ran = Math.random();
+        let level = "";
+        if(ran > 0.95) { level = " L4"; }
+        else if(ran > 0.90) { level = " L3"; }
+        else if(ran > 0.80) { level = " L2"; }
+        else if(ran > 0.70) { level = " L1"; }
+        else { level = ""; }
+        weekRowStr += `<div class="Day${firstDay}${level}" data-date="Date-${dateString}" title="${dateString}"></div>`;
+        weekDayCount++;
+        if(weekDayCount % 7 === 0) {
+            weekCount++;
+            weekRowStr += `</td>`;
+            $("#DaysContainer").append(weekRowStr);
+            $("#WeekCountContainer").append(`<td class="WeekCount">${weekCount}</td>`);
+            weekRowStr = `<td>`;
+        }
+    }
+}
+
+</script>
 </template>
 
 
