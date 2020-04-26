@@ -66,18 +66,18 @@
 
 |非终结符|FIRST|
 |---|
-|`&lt;Term&gt;`|`(` `[` `'` `SYMBOL`|
-|`&lt;SList&gt;`|`(`|
-|`&lt;Lambda&gt;`|`(`|
-|`&lt;SListSeq&gt;`|`ε` `(` `[` `'` `SYMBOL`|
-|`&lt;ArgListSeq&gt;`|`ε` `SYMBOL`|
-|`&lt;ArgList'&gt;`|`(`|
-|`&lt;Body&gt;`|`(` `[` `'` `SYMBOL`|
-|`&lt;Quote&gt;`|`'`|
-|`&lt;Quasiquote&gt;`|`[`|
-|`&lt;Symbol&gt;`|`SYMBOL`|
-|`&lt;BodySymbol&gt;`|`SYMBOL`|
-|`&lt;ArgSymbol&gt;`|`SYMBOL`|
+|`<Term>`|`(` `[` `'` `SYMBOL`|
+|`<SList>`|`(`|
+|`<Lambda>`|`(`|
+|`<SListSeq>`|`ε` `(` `[` `'` `SYMBOL`|
+|`<ArgListSeq>`|`ε` `SYMBOL`|
+|`<ArgList'>`|`(`|
+|`<Body>`|`(` `[` `'` `SYMBOL`|
+|`<Quote>`|`'`|
+|`<Quasiquote>`|`[`|
+|`<Symbol>`|`SYMBOL`|
+|`<BodySymbol>`|`SYMBOL`|
+|`<ArgSymbol>`|`SYMBOL`|
 
 为简单起见，使用递归下降分析。因为已经消除了左递归，所以理论上是不会出现无限循环的。此外，最多只需要向前看两个符号，就可以决定产生式。
 
